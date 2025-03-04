@@ -21,8 +21,10 @@ body {
 .login-title {
     font-size: 24px;
     font-weight: bold;
-    margin-bottom: 20px;
+    margin-bottom:40px; /* increased from 20px */
+    color: #fff;
 }
+
 
 /* Form Fields */
 .form-group {
@@ -38,7 +40,7 @@ body {
     font-size: 16px;
     padding: 10px 30px 10px 5px;
     outline: none;
-    color: black !important;
+    color: #fff !important;
     box-sizing: border-box;
 }
 
@@ -60,6 +62,19 @@ body {
     top: -10px;
     font-size: 12px;
     color: #fff;
+}
+
+p.dont-have-account {
+    color: #fff;
+}
+  
+p.dont-have-account a {
+    color: #dda0dd; /* Light purple */
+    text-decoration: none; /* Optional: remove underline */
+}
+  
+p.dont-have-account a:hover {
+    text-decoration: underline; /* Optional: add underline on hover */
 }
 
 /* Icons */
@@ -92,12 +107,11 @@ body {
     box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.2);  /* Subtle shadow */
 }
 
-
-
 .error-message {
-    color: red;
-    margin-bottom: 10px;
+    color: #ffff00;
+    margin-top: 20px;
 }
+
 
 /* Responsive */
 @media (max-width: 400px) {
