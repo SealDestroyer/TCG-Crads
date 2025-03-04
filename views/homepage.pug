@@ -1,0 +1,30 @@
+doctype html
+html
+  head
+    title TCG Homepage
+    script(src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js")
+    meta(charset="utf-8")
+    meta(name="viewport" content="width=device-width, initial-scale=1.0")
+    link(rel="stylesheet", href="/css/homepage.css")
+  body
+    //- Temporary test element for Student ID
+    p.student-id Student ID: #{student_ID}
+    
+    //- Hidden-style menu bar
+    nav.menu
+      div.logo TCG
+      div.nav-links
+        a(href="#profile") Profile
+        a(href="#history") History
+        a(href="#home") Home
+        a(href="/login") Logout
+
+    //- Center content: title, description and buttons
+    .center-content
+      h1 TCG Cards
+      p A short description about the TCG Cards game experience goes here.
+      .btn-container
+        button.btn#start-btn(type="button") Start
+        button.btn(type="button") Join
+
+    script(src='/homepage.js')

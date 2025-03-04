@@ -37,7 +37,7 @@ module.exports = (db) => {
       req.session.student_id = student.student_ID;
       req.session.email = student.email;
 
-      return res.json({ success: true, redirect: '/index'});
+      return res.json({ success: true, redirect: '/homepage'});
     });
   });
 

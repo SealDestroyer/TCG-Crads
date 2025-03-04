@@ -62,12 +62,12 @@ app.use(registerRoute);
 const loginRoute = require('./routes/login')(db);
 app.use(loginRoute);
 
-const indexRoute = require('./routes/index')(db, checkLoggedIn);
-app.use(indexRoute);
+const homepageRoute = require('./routes/homepage')(db, checkLoggedIn);
+app.use(homepageRoute);
 
 // Defines a route for the root URL ('/') and renders the 'index.pug' view with provided title and message.
 app.get('/registration', (req, res) => { res.render('registration'); });
-app.get('/index', (req, res) => { res.render('index'); });
+app.get('/homepage', (req, res) => { res.render('homepage'); });
 app.get('/login', (req, res) => { res.render('login'); });
 
 // Starts the server on port 3000 and logs a message to the console when the server is running.

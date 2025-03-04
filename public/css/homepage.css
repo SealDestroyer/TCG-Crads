@@ -1,0 +1,101 @@
+/* Reset & Global Styles */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+  }
+  body {
+    font-family: Arial, sans-serif;
+    color: #fff;
+    height: 100vh;
+    overflow: hidden;
+    /* Background image - change the URL to your desired image */
+    background: url('/img/study.jpg') no-repeat center center fixed;
+    background-size: cover;
+    position: relative;
+  }
+  
+/* Hidden-Style Menu Bar */
+nav.menu {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 20px 40px;
+    position: absolute;
+    top: 0;
+    width: 100%;
+    background: transparent;
+  }
+  nav.menu .logo {
+    font-size: 2em;
+    font-weight: bold;
+    cursor: pointer;
+    transition: transform 0.3s, text-shadow 0.3s;
+    /* margin-left: 80px;  Added margin to move logo right */
+  }
+  nav.menu .logo:hover {
+    transform: translateY(-5px);
+    text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
+  }
+  nav.menu .nav-links {
+    display: flex;
+    gap: 30px;
+    /* margin-right: 80px; Added margin to move nav links left */
+  }
+  nav.menu .nav-links a {
+    text-decoration: none;
+    font-size: 1.2em;
+    color: #fff;
+    transition: transform 0.3s, text-shadow 0.3s;
+  }
+  nav.menu .nav-links a:hover {
+    transform: translateY(-5px);
+    text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
+  }  
+  
+  /* Centered Main Content */
+  .center-content {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    text-align: center;
+    padding: 30px;
+    /* Optional: a subtle background overlay to enhance readability */
+    /* background: rgba(0, 0, 0, 0.4); */
+    border-radius: 10px;
+  }
+  .center-content h1 {
+    font-size: 4em;
+    margin-bottom: 20px;
+  }
+  .center-content p {
+    font-size: 1.2em;
+    margin-bottom: 30px;
+  }
+  .btn-container {
+    display: flex;
+    justify-content: center;
+    gap: 20px;
+  }
+  .btn {
+    padding: 15px 30px;
+    font-size: 1.2em;
+    font-weight: bold;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    /* Light colored background to contrast the blue-purple evening feel */
+    background: #fff;
+    color: #333;
+    box-shadow: 0 4px 6px rgba(0,0,0,0.3);
+  }
+  .btn:hover {
+    transform: scale(1.05);
+    background: #6a0dad;
+    box-shadow: 0 6px 10px rgba(0,0,0,0.4);
+    color: #fff;
+    transition: 0.35s ease-in-out;
+  }
+  
