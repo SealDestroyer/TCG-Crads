@@ -34,10 +34,10 @@ module.exports = (db) => {
 
       // Store session data
       req.session.loggedin = true;
-      req.session.student_id = student.id;
+      req.session.student_id = student.student_ID;
       req.session.email = student.email;
 
-      return res.json({ success: true, redirect: '/dashboard' });
+      return res.json({ success: true, redirect: '/index'});
     });
   });
 
@@ -55,3 +55,4 @@ module.exports = (db) => {
 
   return router;
 };
+
