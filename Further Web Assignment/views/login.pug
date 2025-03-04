@@ -1,0 +1,31 @@
+doctype html
+html
+  head
+    title User Login
+    script(src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js")
+    link(rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css")
+    link(rel="stylesheet" href="/css/login.css")
+  body
+    .login-container
+      h2.login-title Login
+
+      p.error-message(style="display: none; color: red;")
+
+      form#login-form(action='/login' method='post' novalidate)
+
+        .form-group
+          input#email.input-field(type='email' name='email' placeholder=" " required)
+          label.input-label(for='email') Email
+          i(class="fa fa-envelope icon")
+
+        .form-group
+          input#password.input-field(type='password' name='password' placeholder=" " required)
+          label.input-label(for='password') Password
+          i(class="fa fa-lock icon")
+
+        button#login-button.button(type='submit') Login
+      
+      p.dont-have-account Don't have an account? 
+        a(href='/registration') Register
+
+    script(src='/login.js')
