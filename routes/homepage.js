@@ -7,10 +7,11 @@ module.exports = (db, checkLoggedIn) => {
   // GET route for homepage (unchanged)
   router.get('/homepage', checkLoggedIn, (req, res) => {
     console.log("Session Data:", req.session.student_id); // Debugging line
-
+  
     res.render('homepage', { 
       student_ID: req.session.student_id, 
-      email: req.session.email 
+      email: req.session.email,
+      name: req.session.name  // Add this line
     });
   });
 

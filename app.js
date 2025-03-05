@@ -65,6 +65,9 @@ app.use(loginRoute);
 const homepageRoute = require('./routes/homepage')(db, checkLoggedIn);
 app.use(homepageRoute);
 
+const joinRoute = require('./routes/join')(db, checkLoggedIn);
+app.use(joinRoute);
+
 // Defines a route for the root URL ('/') and renders the 'index.pug' view with provided title and message.
 app.get('/registration', (req, res) => { res.render('registration'); });
 app.get('/homepage', (req, res) => { res.render('homepage'); });

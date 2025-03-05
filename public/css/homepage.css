@@ -78,24 +78,32 @@ nav.menu {
     justify-content: center;
     gap: 20px;
   }
-  .btn {
-    padding: 15px 30px;
-    font-size: 1.2em;
-    font-weight: bold;
-    border: none;
-    border-radius: 5px;
-    cursor: pointer;
-    transition: all 0.3s ease;
-    /* Light colored background to contrast the blue-purple evening feel */
-    background: #fff;
-    color: #333;
-    box-shadow: 0 4px 6px rgba(0,0,0,0.3);
-  }
-  .btn:hover {
-    transform: scale(1.05);
-    background: #6a0dad;
-    box-shadow: 0 6px 10px rgba(0,0,0,0.4);
-    color: #fff;
-    transition: 0.35s ease-in-out;
-  }
+/* Neon Effect Button Styles with Vibrant Neon Purple */
+/* Neon Effect Button Styles with Vibrant Neon Purple - Toned Down */
+.btn {
+  padding: 15px 30px;
+  font-size: 1.2em;
+  font-weight: bold;
+  border: 2px solid #a500ff; /* Vibrant neon purple border */
+  border-radius: 5px;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  background: #fff; /* White background */
+  color: #a500ff; /* Vibrant neon purple text */
+  text-shadow: 0 0 5px rgba(165, 0, 255, 0.5);
+  box-shadow: 0 0 10px rgba(165, 0, 255, 0.5);
+}
+
+.btn:hover {
+  transform: scale(1.05);
+  background: #a500ff; /* Neon purple background on hover */
+  color: #fff; /* White text on hover */
+  box-shadow: 0 0 10px rgba(165, 0, 255, 0.3), 0 0 15px rgba(165, 0, 255, 0.3);
+  text-shadow: 0 0 5px rgba(165, 0, 255, 0.3);
+  transition: 0.35s ease-in-out;
+}
+
+
+  
+
   

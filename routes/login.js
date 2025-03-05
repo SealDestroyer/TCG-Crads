@@ -36,6 +36,7 @@ module.exports = (db) => {
       req.session.loggedin = true;
       req.session.student_id = student.student_ID;
       req.session.email = student.email;
+      req.session.name = student.name;
 
       return res.json({ success: true, redirect: '/homepage'});
     });
