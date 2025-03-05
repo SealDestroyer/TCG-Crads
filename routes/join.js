@@ -30,6 +30,7 @@ module.exports = (db, checkLoggedIn) => {
         if (playerCount >= 2) {
           return res.json({ success: false, message: 'Game room full' });
         }
+        
         // Insert the new player as the second player (is_player_one = false)
         const insertPlayerQuery = 'INSERT INTO game_players (game_id, student_id, HP, is_player_one) VALUES (?, ?, 1000, false)';
         db.query(insertPlayerQuery, [game_id, studentId], (err, result) => {
@@ -37,12 +38,22 @@ module.exports = (db, checkLoggedIn) => {
             console.error("Error joining game:", err);
             return res.json({ success: false, message: 'Error joining game' });
           }
-          // On success, return the redirect to the game page
-          return res.json({ success: true, redirect: '/game' });
+  
+          // ✅ Store game_id in session for Player 2
+          req.session.game_id = game_id;
+  
+          // ✅ Explicitly save the session before sending response
+          req.session.save((err) => {
+            if (err) {
+              console.error("Error saving session:", err);
+              return res.json({ success: false, message: "Error saving session" });
+            }
+            return res.json({ success: true, redirect: '/game' });
+          });
         });
       });
     });
-  });
+  });  
 
   return router;
 };

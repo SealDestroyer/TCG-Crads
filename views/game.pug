@@ -1,0 +1,30 @@
+doctype html
+html
+  head
+    title TCG Game Session
+    meta(charset="utf-8")
+    meta(name="viewport" content="width=device-width, initial-scale=1.0")
+    link(rel="stylesheet", href="/css/game.css")
+    script(src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js")
+  body
+    .game-container
+      //- PIN Code Display (styled big)
+      .game-pin
+        h1= pin_code
+
+      //- Leaderboard Display: shows Player 1 and Player 2 names
+      .leaderboard
+        h2 Leaderboard
+        ul
+          li#player-one 
+            | Player 1: #{player_one_name}
+          li#player-two 
+            | Player 2: #{player_two_name}
+
+      //- Action Buttons: Only visible for player 1 (host)
+      if is_player_one
+        .buttons-container
+          button#start-game.btn(type="button") Start Game
+          button#cancel-game.btn(type="button") Cancel Game
+
+    script(src='/game.js')
