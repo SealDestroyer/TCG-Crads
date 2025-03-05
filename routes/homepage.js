@@ -5,15 +5,15 @@ module.exports = (db, checkLoggedIn) => {
   const router = express.Router();
 
   // GET route for homepage (unchanged)
-  router.get('/homepage', checkLoggedIn, (req, res) => {
-    console.log("Session Data:", req.session.student_id); // Debugging line
-  
-    res.render('homepage', { 
-      student_ID: req.session.student_id, 
-      email: req.session.email,
-      name: req.session.name  // Add this line
-    });
+router.get('/homepage', checkLoggedIn, (req, res) => {
+  console.log("Session Data:", req.session.student_id); // Debugging line
+
+  res.render('homepage', { 
+    student_ID: req.session.student_id, 
+    email: req.session.email,
+    name: req.session.name  // Add this line
   });
+});
 
   // Helper function to generate a random pin code
   function generatePinCode(length = 6) {
@@ -36,7 +36,7 @@ module.exports = (db, checkLoggedIn) => {
     db.query(insertGameQuery, [pin_code], (err, result) => {
       if (err) {
         console.error("Error inserting into game table:", err);
-        return res.json({ success: false, message: "Error starting game." });
+        return res.json({ success: false, message: "Error starting game" });
       }
       const game_id = result.insertId;
 
@@ -45,7 +45,7 @@ module.exports = (db, checkLoggedIn) => {
       db.query(insertPlayerQuery, [game_id, studentId], (err2, result2) => {
         if (err2) {
           console.error("Error inserting into game_players table:", err2);
-          return res.json({ success: false, message: "Error adding player to game." });
+          return res.json({ success: false, message: "Error adding player to game" });
         }
         // Success: redirect the player to the game page
         return res.json({ success: true, redirect: '/game' });

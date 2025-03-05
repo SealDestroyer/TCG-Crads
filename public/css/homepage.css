@@ -1,109 +1,199 @@
 /* Reset & Global Styles */
 * {
-    margin: 0;
-    padding: 0;
-    box-sizing: border-box;
-  }
-  body {
-    font-family: Arial, sans-serif;
-    color: #fff;
-    height: 100vh;
-    overflow: hidden;
-    /* Background image - change the URL to your desired image */
-    background: url('/img/study.jpg') no-repeat center center fixed;
-    background-size: cover;
-    position: relative;
-  }
-  
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+body {
+  font-family: Arial, sans-serif;
+  color: #fff;
+  height: 100vh;
+  overflow: hidden;
+  background: url('/img/study.jpg') no-repeat center center fixed;
+  background-size: cover;
+  position: relative;
+}
+
 /* Hidden-Style Menu Bar */
 nav.menu {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    padding: 20px 40px;
-    position: absolute;
-    top: 0;
-    width: 100%;
-    background: transparent;
-  }
-  nav.menu .logo {
-    font-size: 2em;
-    font-weight: bold;
-    cursor: pointer;
-    transition: transform 0.3s, text-shadow 0.3s;
-    /* margin-left: 80px;  Added margin to move logo right */
-  }
-  nav.menu .logo:hover {
-    transform: translateY(-5px);
-    text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
-  }
-  nav.menu .nav-links {
-    display: flex;
-    gap: 30px;
-    /* margin-right: 80px; Added margin to move nav links left */
-  }
-  nav.menu .nav-links a {
-    text-decoration: none;
-    font-size: 1.2em;
-    color: #fff;
-    transition: transform 0.3s, text-shadow 0.3s;
-  }
-  nav.menu .nav-links a:hover {
-    transform: translateY(-5px);
-    text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
-  }  
-  
-  /* Centered Main Content */
-  .center-content {
-    position: absolute;
-    top: 50%;
-    left: 50%;
-    transform: translate(-50%, -50%);
-    text-align: center;
-    padding: 30px;
-    /* Optional: a subtle background overlay to enhance readability */
-    /* background: rgba(0, 0, 0, 0.4); */
-    border-radius: 10px;
-  }
-  .center-content h1 {
-    font-size: 4em;
-    margin-bottom: 20px;
-  }
-  .center-content p {
-    font-size: 1.2em;
-    margin-bottom: 30px;
-  }
-  .btn-container {
-    display: flex;
-    justify-content: center;
-    gap: 20px;
-  }
-/* Neon Effect Button Styles with Vibrant Neon Purple */
-/* Neon Effect Button Styles with Vibrant Neon Purple - Toned Down */
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 20px 40px;
+  position: absolute;
+  top: 0;
+  width: 100%;
+  background: transparent;
+}
+nav.menu .logo {
+  font-size: 2em;
+  font-weight: bold;
+  cursor: pointer;
+  transition: transform 0.3s, text-shadow 0.3s;
+}
+nav.menu .logo:hover {
+  transform: translateY(-5px);
+  text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
+}
+nav.menu .nav-links {
+  display: flex;
+  gap: 30px;
+}
+nav.menu .nav-links a {
+  text-decoration: none;
+  font-size: 1.2em;
+  color: #fff;
+  transition: transform 0.3s, text-shadow 0.3s;
+}
+nav.menu .nav-links a:hover {
+  transform: translateY(-5px);
+  text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
+}
+
+/* Centered Main Content */
+.center-content {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  text-align: center;
+  padding: 30px;
+  border-radius: 10px;
+}
+.center-content h1 {
+  font-size: 4em;
+  margin-bottom: 20px;
+}
+.center-content p {
+  font-size: 1.2em;
+  margin-bottom: 30px;
+}
+.btn-container {
+  display: flex;
+  justify-content: center;
+  gap: 20px;
+}
+
+/* Neon Effect Button Styles */
 .btn {
   padding: 15px 30px;
   font-size: 1.2em;
   font-weight: bold;
-  border: 2px solid #a500ff; /* Vibrant neon purple border */
+  border: 2px solid #a500ff;
   border-radius: 5px;
   cursor: pointer;
   transition: all 0.3s ease;
-  background: #fff; /* White background */
-  color: #a500ff; /* Vibrant neon purple text */
+  background: #fff;
+  color: #a500ff;
   text-shadow: 0 0 5px rgba(165, 0, 255, 0.5);
   box-shadow: 0 0 10px rgba(165, 0, 255, 0.5);
 }
-
 .btn:hover {
   transform: scale(1.05);
-  background: #a500ff; /* Neon purple background on hover */
-  color: #fff; /* White text on hover */
+  background: #a500ff;
+  color: #fff;
   box-shadow: 0 0 10px rgba(165, 0, 255, 0.3), 0 0 15px rgba(165, 0, 255, 0.3);
   text-shadow: 0 0 5px rgba(165, 0, 255, 0.3);
   transition: 0.35s ease-in-out;
 }
 
+/* Modal background */
+.modal {
+  display: none;
+  position: fixed;
+  z-index: 1000;
+  left: 0;
+  top: 0;
+  width: 100%;
+  height: 100%;
+  overflow: auto;
+  background-color: rgba(0,0,0,0.5);
+}
 
-  
+/* Modal content box with glowing effect */
+.modal-content {
+  background-color: #222;
+  margin: 15% auto;
+  padding: 20px;
+  border: 1px solid #444;
+  width: 300px;
+  border-radius: 10px;
+  text-align: center;
+  box-shadow: 0 0 20px #bf00ff;
+  color: #fff;
+  position: relative;
+}
 
-  
+/* Close button styling */
+.close-button {
+  position: absolute;
+  top: 10px;
+  right: 15px;
+  font-size: 1.5em;
+  font-weight: bold;
+  cursor: pointer;
+}
+
+/* Input field styling inside modal */
+#join-pin {
+  width: 90%;
+  padding: 10px;
+  margin: 15px 0;
+  border: none;
+  border-radius: 5px;
+}
+
+/* Modal join button styling with transition */
+#modal-join-btn {
+  padding: 10px 20px;
+  background-color: #9400d3;
+  border: none;
+  border-radius: 5px;
+  font-weight: bold;
+  color: #fff;
+  cursor: pointer;
+  transition: background-color 0.3s ease, transform 0.3s ease;
+}
+#modal-join-btn:hover {
+  background-color: #bf00ff;
+  transform: scale(1.05);
+}
+
+/* Nested Validation Modal inside join modal */
+.validation-modal {
+  display: none; /* Hidden by default */
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0, 0, 0, 0.9); /* Dark overlay */
+  z-index: 1100;
+  border-radius: 10px;
+  padding: 20px;
+  box-sizing: border-box;
+}
+.validation-content {
+  position: relative;
+  top: 50%;
+  transform: translateY(-50%);
+}
+#validation-message {
+  font-size: 1.2em;
+  margin-bottom: 20px;
+}
+/* Validation OK button styling with transition */
+#validation-ok-btn {
+  padding: 10px 20px;
+  background-color: #9400d3;
+  border: none;
+  border-radius: 5px;
+  font-weight: bold;
+  color: #fff;
+  cursor: pointer;
+  transition: background-color 0.3s ease, transform 0.3s ease;
+}
+#validation-ok-btn:hover {
+  background-color: #bf00ff;
+  transform: scale(1.05);
+}
