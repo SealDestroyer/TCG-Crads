@@ -34,8 +34,8 @@ app.use(bodyParser.urlencoded({ extended: true }));
 const db = mysql.createConnection({
   host: 'localhost',
   user: 'root',
-  password: '',
-  database: 'tcg cards',
+  password: 'root',
+  database: 'tcgcards',
 });
 
 db.connect((err) => {

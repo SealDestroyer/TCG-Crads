@@ -103,10 +103,10 @@
 $(document).ready(function() {
   // Preload background image
   let bgImage = new Image();
-  bgImage.src = "/img/study.jpg";
+  bgImage.src = "/img/studybeta.jpg";
   bgImage.onload = function() {
     $("body").css({
-      "background-image": "url('/img/study.jpg')",
+      "background-image": "url('/img/studybeta.jpg')",
       "background-size": "cover",
       "background-repeat": "no-repeat",
       "background-position": "center center",
