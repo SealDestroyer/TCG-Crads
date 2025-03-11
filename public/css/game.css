@@ -1,80 +1,93 @@
 /* Global Styles */
 body {
-    font-family: Arial, sans-serif;
-    background: url('/img/study.jpg') no-repeat center center fixed;
-    background-size: cover;
-    color: #fff;
-    margin: 0;
-    padding: 0;
-  }
-  
-  /* Game Container */
-  .game-container {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: center;
-    height: 100vh;
-  }
-  
-  /* PIN Code Styling */
-  .game-pin h1 {
-    font-size: 4em; /* Adjust size as needed */
-    font-weight: bold;
-    margin-bottom: 20px;
-  }
-  
-  /* Leaderboard Styling */
-  .leaderboard {
-    background: rgba(0, 0, 0, 0.5);
-    padding: 20px 30px;
-    border-radius: 10px;
-    text-align: center;
-    margin-bottom: 20px;
-  }
-  .leaderboard h2 {
-    margin-bottom: 10px;
-  }
-  .leaderboard ul {
-    list-style: none;
-    padding: 0;
-    margin: 0;
-  }
-  .leaderboard li {
-    font-size: 1.5em;
-    margin: 5px 0;
-  }
-  
-  /* Buttons Container */
-  .buttons-container {
-    display: flex;
-    gap: 20px;
-  }
-  
-  /* Neon Effect Button Styles */
-  .btn {
-    padding: 15px 30px;
-    font-size: 1.2em;
-    font-weight: bold;
-    border: 2px solid #a500ff;
-    border-radius: 5px;
-    cursor: pointer;
-    background: #fff;
-    color: #a500ff;
-    text-shadow: 0 0 5px rgba(165, 0, 255, 0.5);
-    box-shadow: 0 0 10px rgba(165, 0, 255, 0.5);
-    transition: all 0.3s ease;
-  }
-  .btn:hover {
-    transform: scale(1.05);
-    background: #a500ff;
-    color: #fff;
-    box-shadow: 0 0 10px rgba(165, 0, 255, 0.3), 0 0 15px rgba(165, 0, 255, 0.3);
-    text-shadow: 0 0 5px rgba(165, 0, 255, 0.3);
-  }
-  /* Disabled button style */
-  .btn:disabled {
-    opacity: 0.6;
-    cursor: not-allowed;
-  }
-  
+  font-family: Arial, sans-serif;
+  background: url('/img/study.jpg') no-repeat center center fixed;
+  background-size: cover;
+  color: #fff;
+  margin: 0;
+  padding: 0;
+}
+
+/* Game Container */
+.game-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  height: 100vh;
+}
+
+/* PIN Code Styling */
+.game-pin h1 {
+  font-size: 4em; /* Adjust size as needed */
+  font-weight: bold;
+  margin-bottom: 20px;
+}
+
+/* Leaderboard Styling */
+.leaderboard {
+  background: rgba(0, 0, 0, 0.8);
+  padding: 20px 30px;
+  border-radius: 10px;
+  text-align: center;
+  margin-bottom: 20px;
+  box-shadow: 0 0 20px #bf00ff;
+  border: 2px solid #9400d3;
+}
+.leaderboard h2 {
+  margin-bottom: 10px;
+}
+.leaderboard ul {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+.leaderboard li {
+  font-size: 1.5em;
+  margin: 5px 0;
+}
+
+/* Buttons Container */
+.buttons-container {
+  display: flex;
+  gap: 30px; /* Increased gap between buttons */
+}
+
+/* Standardized Button Size Fix */
+.buttons-container .btn {
+  width: 200px; /* Both buttons will now have the same fixed width */
+  text-align: center;
+  white-space: nowrap; /* Prevents text from wrapping */
+  overflow: hidden;
+}
+
+/* Neon Effect Button Styles */
+.btn {
+  padding: 15px 30px;
+  font-size: 1.2em;
+  font-weight: bold;
+  border: 2px solid #a500ff;
+  border-radius: 5px;
+  cursor: pointer;
+  background: #fff;
+  color: #a500ff;
+  text-shadow: 0 0 5px rgba(165, 0, 255, 0.5);
+  box-shadow: 0 0 10px rgba(165, 0, 255, 0.5);
+  transition: all 0.3s ease;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+.btn:hover {
+  transform: scale(1.05);
+  background: #a500ff;
+  color: #fff;
+  box-shadow: 0 0 10px rgba(165, 0, 255, 0.3), 0 0 15px rgba(165, 0, 255, 0.3);
+  text-shadow: 0 0 5px rgba(165, 0, 255, 0.3);
+}
+
+/* Disabled button style */
+.btn:disabled {
+  opacity: 0.6;
+  cursor: not-allowed;
+}
