@@ -1,0 +1,31 @@
+doctype html
+html
+  head
+    title Scoreboard
+    meta(charset="utf-8")
+    meta(name="viewport" content="width=device-width, initial-scale=1.0")
+    link(rel="stylesheet", href="/css/startgame.css")
+  body
+    .scoreboard-container
+      h1 Scoreboard
+      
+      .scoreboard
+        .player
+          .profile-pic
+            img(src="/img/panda.jpg" alt="Profile Picture")
+          .player-info
+            .player-name #{player_one_name} WeygenTest
+            .hp 1000 HP
+
+        .separator-line
+          hr
+
+        .player
+          .profile-pic
+            img(src="/img/panda.jpg" alt="Profile Picture")
+          .player-info
+            .player-name #{player_two_name} Jarentest
+            .hp 1000 HP
+
+      .buttons-container
+        button#qr-scanner.btn(type="button") Scan QR Code

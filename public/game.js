@@ -120,6 +120,6 @@ $(document).ready(function () {
 
   // ✅ Handle Start Game
   $("#start-game").click(function () {
-      window.location.href = '/gamestart';
+      window.location.href = '/startgame';
   });
 });

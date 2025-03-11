@@ -1,0 +1,146 @@
+/* Global Styles */
+body {
+    font-family: Arial, sans-serif;
+    background: url('/img/startgame.jpg') no-repeat center center fixed;
+    background-size: cover;
+    color: #fff;
+    margin: 0;
+    padding: 0;
+}
+
+/* Scoreboard Container */
+.scoreboard-container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    height: 100vh;
+}
+
+/* Scoreboard Title Glowing Effect */
+h1 {
+    font-size: 2.5em;
+    font-weight: bold;
+    text-align: center;
+    color: #fff;
+    text-shadow: 0 0 10px #bf00ff, 0 0 20px #bf00ff, 0 0 30px #9400d3, 0 0 40px #9400d3;
+    animation: glow 1.5s infinite alternate;
+}
+
+/* Neon Glow Animation */
+@keyframes glow {
+    0% {
+        text-shadow: 0 0 10px #bf00ff, 0 0 20px #bf00ff, 0 0 30px #9400d3, 0 0 40px #9400d3;
+    }
+    100% {
+        text-shadow: 0 0 15px #bf00ff, 0 0 25px #bf00ff, 0 0 35px #9400d3, 0 0 45px #9400d3;
+    }
+}
+
+
+/* Scoreboard Box */
+.scoreboard {
+    background: rgba(0, 0, 0, 0.8);
+    padding: 30px;
+    border-radius: 10px;
+    text-align: center;
+    box-shadow: 0 0 20px #bf00ff;
+    border: 2px solid #9400d3;
+    width: 350px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+/* Player Block */
+.player {
+    display: flex;
+    align-items: center;
+    gap: 15px;
+    width: 100%;
+    padding: 10px 0;
+}
+
+/* Player Profile Picture */
+.profile-pic img {
+    width: 60px;
+    height: 60px;
+    border-radius: 50%;
+    border: 2px solid #a500ff;
+}
+
+/* Player Info */
+.player-info {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    flex-grow: 1;
+    min-width: 0; /* Allows text wrapping within flexbox */
+}
+
+/* Player Name */
+.player-name {
+    font-size: 1.5em;
+    font-weight: bold;
+    color: #fff;
+    text-shadow: 0 0 5px rgba(165, 0, 255, 0.5);
+    max-width: 220px; /* Prevents breaking UI */
+    overflow-wrap: break-word; /* Breaks long words properly */
+    word-wrap: break-word; /* Ensures wrapping */
+    text-align: left; /* Keeps text aligned properly */
+}
+
+/* Player HP */
+.hp {
+    font-size: 1.5em;
+    font-weight: bold;
+    color: #ff0055;
+    text-shadow: 0 0 5px rgba(255, 0, 85, 0.5);
+    white-space: nowrap; /* Ensures HP text does not break */
+}
+
+
+/* Separator Line */
+.separator-line {
+    width: 100%;
+    display: flex;
+    justify-content: center;
+}
+
+.separator-line hr {
+    width: 90%;
+    height: 3px;
+    background: linear-gradient(90deg, #9400d3, #bf00ff);
+    border: none;
+    box-shadow: 0 0 10px rgba(165, 0, 255, 0.9), 0 0 15px rgba(165, 0, 255, 0.7);
+    margin: 10px auto;
+}
+
+/* Buttons */
+.buttons-container {
+    display: flex;
+    margin-top: 20px;
+}
+
+/* QR Scanner Button */
+.btn {
+    padding: 15px 30px;
+    font-size: 1.2em;
+    font-weight: bold;
+    border: 2px solid #a500ff;
+    border-radius: 5px;
+    cursor: pointer;
+    background: #fff;
+    color: #a500ff;
+    text-shadow: 0 0 5px rgba(165, 0, 255, 0.5);
+    box-shadow: 0 0 10px rgba(165, 0, 255, 0.5);
+    transition: all 0.3s ease;
+}
+
+.btn:hover {
+    transform: scale(1.05);
+    background: #a500ff;
+    color: #fff;
+    box-shadow: 0 0 10px rgba(165, 0, 255, 0.3), 0 0 15px rgba(165, 0, 255, 0.3);
+    text-shadow: 0 0 5px rgba(165, 0, 255, 0.3);
+}
