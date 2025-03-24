@@ -5,6 +5,7 @@ html
     meta(charset="utf-8")
     meta(name="viewport" content="width=device-width, initial-scale=1.0")
     link(rel="stylesheet", href="/css/startgame.css")
+    script(src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js")
   body
     .scoreboard-container
       h1 Scoreboard
@@ -14,8 +15,8 @@ html
           .profile-pic
             img(src="/img/panda.jpg" alt="Profile Picture")
           .player-info
-            .player-name #{player_one_name} WeygenTest
-            .hp 1000 HP
+            .player-name #{player_one_name}
+            .hp #{player_one_hp} HP
 
         .separator-line
           hr
@@ -24,8 +25,18 @@ html
           .profile-pic
             img(src="/img/panda.jpg" alt="Profile Picture")
           .player-info
-            .player-name #{player_two_name} Jarentest
-            .hp 1000 HP
+            .player-name #{player_two_name}
+            .hp #{player_two_hp} HP
 
       .buttons-container
-        button#qr-scanner.btn(type="button") Scan QR Code
+        button#qr-scanner.btn(type="button") Scan QR
+        button#exit-game.btn(type="button") Exit Game
+
+    //- Winner Modal
+    div#winModal.modal(style="display: none;")
+      div.modal-content
+        h2 Congratulations Winner!
+        p#winner-name
+        button#win-ok-btn OK
+
+    script(src='/startgame.js')

@@ -119,12 +119,15 @@ h1 {
 /* Buttons */
 .buttons-container {
     display: flex;
+    justify-content: center;
+    gap: 20px; /* Adds spacing between buttons */
     margin-top: 20px;
-}
-
-/* QR Scanner Button */
-.btn {
+  }
+  
+  /* Ensure buttons are same size */
+  .btn {
     padding: 15px 30px;
+    min-width: 180px; /* Force consistent width */
     font-size: 1.2em;
     font-weight: bold;
     border: 2px solid #a500ff;
@@ -135,12 +138,61 @@ h1 {
     text-shadow: 0 0 5px rgba(165, 0, 255, 0.5);
     box-shadow: 0 0 10px rgba(165, 0, 255, 0.5);
     transition: all 0.3s ease;
-}
-
-.btn:hover {
+    text-align: center;
+  }
+  
+  .btn:hover {
     transform: scale(1.05);
     background: #a500ff;
     color: #fff;
     box-shadow: 0 0 10px rgba(165, 0, 255, 0.3), 0 0 15px rgba(165, 0, 255, 0.3);
-    text-shadow: 0 0 5px rgba(165, 0, 255, 0.3);
-}
+  }
+  
+/* Winner Modal Styles */
+.modal {
+    display: none;
+    position: fixed;
+    z-index: 1000;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    overflow: auto;
+    background-color: rgba(0, 0, 0, 0.5);
+  }
+  
+  #winModal .modal-content {
+    background-color: #222;
+    margin: 0 auto;
+    margin-top: 38vh; /* ⬅️ Moves modal down */
+    padding: 20px;
+    border: 1px solid #444;
+    width: 300px;
+    border-radius: 10px;
+    text-align: center;
+    box-shadow: 0 0 20px #bf00ff;
+    color: #fff;
+    position: relative;
+  }
+  
+  #winner-name {
+    font-size: 1.4em;
+    margin: 15px 0;
+  }
+  
+  #win-ok-btn {
+    padding: 10px 20px;
+    background-color: #9400d3;
+    border: none;
+    border-radius: 5px;
+    font-weight: bold;
+    color: #fff;
+    cursor: pointer;
+    transition: background-color 0.3s ease, transform 0.3s ease;
+  }
+  
+  #win-ok-btn:hover {
+    background-color: #bf00ff;
+    transform: scale(1.05);
+  }
+  
