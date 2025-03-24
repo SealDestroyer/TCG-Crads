@@ -74,12 +74,15 @@ app.use(gameRoute);
 const cancelgameRoute = require('./routes/cancelgame')(db, checkLoggedIn);
 app.use(cancelgameRoute);
 
+
+
 // Defines a route for the root URL ('/') and renders the 'index.pug' view with provided title and message.
 app.get('/registration', (req, res) => { res.render('registration'); });
 app.get('/homepage', (req, res) => { res.render('homepage'); });
 app.get('/login', (req, res) => { res.render('login'); });
 app.get('/game', (req, res) => { res.render('game'); });
 app.get('/startgame', (req, res) => { res.render('startgame'); });
+app.get('/scanqr', (req, res) => { res.render('scanqr'); });
 
 // Starts the server on port 3000 and logs a message to the console when the server is running.
 app.listen(4000, function () {

@@ -1,0 +1,199 @@
+/* === GLOBAL BACKGROUND === */
+body {
+  font-family: Arial, sans-serif;
+  background: url('/img/startgame.jpg') no-repeat center center fixed;
+  background-size: cover;
+  color: #fff;
+  margin: 0;
+  padding: 0;
+  overflow: hidden; /* prevent unwanted scrolling */
+}
+
+/* === SCANNER CONTAINER === */
+.scanner-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  height: 70vh;
+  margin-right: 25px;
+}
+
+/* === GLOWING TITLE === */
+h1 {
+  font-size: 2.5em;
+  font-weight: bold;
+  text-align: center;
+  color: #fff;
+  text-shadow: 0 0 10px #00ffff, 0 0 20px #00ffff;
+  animation: glowTitle 1.5s infinite alternate;
+  margin-bottom: 28px;
+}
+
+@keyframes glowTitle {
+  from { text-shadow: 0 0 10px #00ffff; }
+  to { text-shadow: 0 0 20px #00ffff; }
+}
+
+
+#reader {
+    width: 360px;
+    height: 300px;
+    border: 4px solid #00ffff;
+    /* border-radius: 15px; */
+    box-shadow: 0 0 20px #00ffff;
+    overflow: hidden;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+  
+  #reader video,
+  #reader__camera_preview {
+    width: 100% !important;
+    height: 100% !important;
+    object-fit: cover;
+    display: block;
+    margin: 0;
+    padding: 0;
+  }
+  
+  
+#reader video {
+  width: 100% !important;
+  height: 100% !important;
+  object-fit: cover;
+}
+
+/* Optional: Hide html5-qrcode internal overlay box */
+#reader__scan_region {
+  border: none !important;
+  box-shadow: none !important;
+}
+
+/* === MODAL STYLE FOR QUESTION === */
+.modal {
+  display: none;
+  position: fixed;
+  z-index: 1000;
+  left: 0;
+  top: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0, 0, 0, 0.6);
+}
+
+.modal-content {
+  background-color: #222;
+  margin: 0 auto;
+  margin-top: 20vh;
+  padding: 25px;
+  border: 2px solid #00ffff;
+  border-radius: 10px;
+  width: 350px;
+  text-align: center;
+  box-shadow: 0 0 25px #00ffff;
+  animation: glowModal 1.5s infinite alternate;
+}
+
+@keyframes glowModal {
+  from { box-shadow: 0 0 20px #00ffff; }
+  to { box-shadow: 0 0 35px #00ffff; }
+}
+
+.modal-content h2 {
+  margin-top: 0;
+  color: #00ffff;
+  text-shadow: 0 0 10px #00ffff;
+}
+
+#question-text {
+  margin: 15px 0;
+  font-size: 1.2em;
+  color: #fff;
+}
+
+/* === OPTION BUTTONS === */
+.option-btn {
+  display: block;
+  width: 100%;
+  padding: 12px;
+  margin: 10px 0;
+  background-color: #00ffff;
+  color: #000;
+  font-weight: bold;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  transition: all 0.3s ease;
+}
+
+.option-btn:hover {
+  background-color: #00dddd;
+  transform: scale(1.03);
+}
+
+/* Buttons */
+.buttons-container {
+    display: flex;
+    justify-content: center;
+    margin-top: 20px;
+  }
+
+  /* Special tweak only for the Back button */
+.back-btn {
+    min-width: unset;         /* remove fixed width */
+    padding: 10px 20px;       /* smaller button */
+    font-size: 26px;           /* smaller text */
+    margin-left: -20px;       /* shift it left slightly */
+  }
+
+  
+  /* Ensure buttons are same size */
+  /* .btn {
+    padding: 15px 30px;
+    min-width: 150px; 
+    font-size: 1.5em;
+    font-weight: bold;
+    border: 2px solid #a500ff;
+    border-radius: 5px;
+    cursor: pointer;
+    background: #fff;
+    color: #a500ff;
+    text-shadow: 0 0 5px rgba(165, 0, 255, 0.5);
+    box-shadow: 0 0 10px rgba(165, 0, 255, 0.5);
+    transition: all 0.3s ease;
+    text-align: center;
+    text-decoration: none;
+  }
+  
+  .btn:hover {
+    transform: scale(1.05);
+    background: #a500ff;
+    color: #fff;
+    box-shadow: 0 0 10px rgba(165, 0, 255, 0.3), 0 0 15px rgba(165, 0, 255, 0.3);
+  } */
+
+  .btn {
+    padding: 15px 30px;
+    min-width: 150px;
+    font-size: 1.5em;
+    font-weight: bold;
+    border: 2px solid #00ffff; /* Neon border */
+    border-radius: 5px;
+    cursor: pointer;
+    background: #000; /* Black background */
+    color: #fff; /* White text */
+    text-shadow: 0 0 5px #00ffff;
+    box-shadow: 0 0 10px #00ffff;
+    transition: all 0.3s ease;
+    text-align: center;
+    text-decoration: none;
+  }
+  
+  .btn:hover {
+    transform: scale(1.05);
+    color: #00ffff; /* Neon text on hover */
+    box-shadow: 0 0 12px #00ffff, 0 0 20px #00ffff;
+  }
+  

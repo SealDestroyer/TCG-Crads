@@ -61,6 +61,11 @@ $(document).ready(function () {
         window.location.href = "/homepage";
     });
 
+    // ▶️ Scan QR Button → Go to scanQR UI
+    $("#qr-scanner").click(function () {
+        window.location.href = "/scanqr";
+    });
+
     // ✅ Start polling for real-time updates
     gamePolling = setInterval(pollGameState, 2000);
 });

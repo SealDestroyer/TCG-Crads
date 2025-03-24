@@ -1,0 +1,29 @@
+doctype html
+html
+  head
+    title Scan QR Code
+    meta(charset="utf-8")
+    meta(name="viewport" content="width=device-width, initial-scale=1.0")
+    link(rel="stylesheet", href="/css/scanqr.css")
+    script(src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js")
+    script(src="/html5-qrcode.min.js") <!-- QR scanner lib -->
+  body
+    .scanner-container
+      h1 Scan Your Card
+      #reader(style="width: 530px; height: 320px;")
+
+    .buttons-container
+         a.btn.back-btn(href="/startgame") Back
+
+    // Modal (hidden initially)
+    div#questionModal.modal(style="display: none;")
+      div.modal-content
+        h2 Question
+        p#question-text
+        .options
+          button.option-btn Option A
+          button.option-btn Option B
+          button.option-btn Option C
+          button.option-btn Option D
+
+    script(src="/scanqr.js")
