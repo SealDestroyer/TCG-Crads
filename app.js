@@ -74,7 +74,11 @@ app.use(gameRoute);
 const cancelgameRoute = require('./routes/cancelgame')(db, checkLoggedIn);
 app.use(cancelgameRoute);
 
+const qrQuestionRoute = require('./routes/qrquestion')(db);
+app.use(qrQuestionRoute);
 
+const submitAnswerRoute = require('./routes/submitanswer')(db);
+app.use(submitAnswerRoute);
 
 // Defines a route for the root URL ('/') and renders the 'index.pug' view with provided title and message.
 app.get('/registration', (req, res) => { res.render('registration'); });

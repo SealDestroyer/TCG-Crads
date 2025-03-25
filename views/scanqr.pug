@@ -25,5 +25,12 @@ html
           button.option-btn Option B
           button.option-btn Option C
           button.option-btn Option D
+          
+    // Answer Result Modal (Correct or Wrong)
+    div#resultModal.modal(style="display: none;")
+      div.modal-content
+        h2#result-title
+        p#result-message
+        button#result-ok-btn OK
 
     script(src="/scanqr.js")
