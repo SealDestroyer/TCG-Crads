@@ -1,3 +1,105 @@
+// let qrScanner;
+// let scannedQuestion = null;
+
+// $(document).ready(function () {
+//   qrScanner = new Html5Qrcode("reader");
+
+//   const config = { fps: 10 };
+
+//   function onScanSuccess(decodedText) {
+//     const parts = decodedText.split('/');
+//     if (parts.length !== 3) {
+//       alert("Invalid QR format.");
+//       return;
+//     }
+
+//     const [type, difficulty, value] = parts;
+
+//     $.get(`/qrquestion/${type}/${difficulty}/${value}`, function (data) {
+//       if (!data.success) {
+//         alert("No matching question found.");
+//         return;
+//       }
+
+//       scannedQuestion = data.question;
+
+//       $("#question-text").text(scannedQuestion.text);
+//       $(".option-btn").each(function (index) {
+//         const option = data.options[index];
+//         $(this).text(option.option_text);
+//         $(this).data("isCorrect", option.is_correct);
+//         $(this).data("reason", option.reason || "");
+//         $(this).data("answer", option.option_text);
+//         $(this).data("optionId", option.option_id); // ✅ new
+//       });
+
+//       $("#questionModal").fadeIn();
+//       qrScanner.stop().catch(() => {});
+//     });
+//   }
+
+//   qrScanner.start(
+//     { facingMode: "environment" },
+//     config,
+//     onScanSuccess,
+//     (errMsg) => {
+//       console.warn("Scan error:", errMsg);
+//     }
+//   ).catch((err) => {
+//     alert("⚠️ Cannot start camera. Please check permission.");
+//     console.error("Scanner start error:", err);
+//   });
+
+//   window.addEventListener("beforeunload", function () {
+//     if (qrScanner) {
+//       qrScanner.stop().catch(() => {});
+//     }
+//   });
+
+//   $(".option-btn").click(function () {
+//     const isCorrect = $(this).data("isCorrect") == 1;
+//     const selectedAnswer = $(this).data("answer");
+//     const optionId = $(this).data("optionId");
+
+//     $("#questionModal").fadeOut();
+
+//     const payload = {
+//       type: scannedQuestion.card_type,
+//       value: scannedQuestion.effect_value,
+//       question_id: scannedQuestion.id,      
+//       option_id: optionId                   
+//     };
+
+//     if (isCorrect) {
+//       $.post("/submit-answer", payload, function () {
+//         $("#result-title").text("Correct!");
+//         $("#result-message").text(`Yes, "${selectedAnswer}" is correct.`);
+//         $("#resultModal").fadeIn();
+//       });
+//     } else {
+//       let correctAnswer = "", correctReason = "";
+
+//       $(".option-btn").each(function () {
+//         if ($(this).data("isCorrect") == 1) {
+//           correctAnswer = $(this).data("answer");
+//           correctReason = $(this).data("reason");
+//         }
+//       });
+
+//       $.post("/submit-answer", payload); // ✅ still store wrong answer
+
+//       $("#result-title").text("Wrong Answer");
+//       $("#result-message").text(`Correct answer: "${correctAnswer}".\nReason: ${correctReason}`);
+//       $("#resultModal").fadeIn();
+//     }
+//   });
+
+//   $("#result-ok-btn").click(function () {
+//     window.location.href = "/startgame";
+//   });
+// });
+
+
 let qrScanner;
 let scannedQuestion = null;
 
@@ -17,7 +119,12 @@ $(document).ready(function () {
 
     $.get(`/qrquestion/${type}/${difficulty}/${value}`, function (data) {
       if (!data.success) {
-        alert("No matching question found.");
+        if (data.message.includes("Wait")) {
+          $("#lock-message").text(data.message);
+          $("#lockModal").fadeIn();
+        } else {
+          alert(data.message);
+        }
         return;
       }
 
@@ -30,7 +137,7 @@ $(document).ready(function () {
         $(this).data("isCorrect", option.is_correct);
         $(this).data("reason", option.reason || "");
         $(this).data("answer", option.option_text);
-        $(this).data("optionId", option.option_id); // ✅ new
+        $(this).data("optionId", option.option_id);
       });
 
       $("#questionModal").fadeIn();
@@ -66,8 +173,8 @@ $(document).ready(function () {
     const payload = {
       type: scannedQuestion.card_type,
       value: scannedQuestion.effect_value,
-      question_id: scannedQuestion.id,      
-      option_id: optionId                   
+      question_id: scannedQuestion.id,
+      option_id: optionId
     };
 
     if (isCorrect) {
@@ -86,15 +193,19 @@ $(document).ready(function () {
         }
       });
 
-      $.post("/submit-answer", payload); // ✅ still store wrong answer
+      $.post("/submit-answer", payload);
 
       $("#result-title").text("Wrong Answer");
-      $("#result-message").text(`Correct answer: "${correctAnswer}".\nReason: ${correctReason}`);
+      $("#result-message").html(`Correct answer: "${correctAnswer}".<br>Reason: ${correctReason}`);
       $("#resultModal").fadeIn();
     }
   });
 
   $("#result-ok-btn").click(function () {
+    window.location.href = "/startgame";
+  });
+
+  $("#lock-ok-btn").click(function () {
     window.location.href = "/startgame";
   });
 });

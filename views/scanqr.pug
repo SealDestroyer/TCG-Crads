@@ -33,4 +33,11 @@ html
         p#result-message
         button#result-ok-btn OK
 
+    // Lock Modal - shown if opponent is answering
+    div#lockModal.modal(style="display: none;")
+      div.modal-content
+        h2 Hold Up!
+        p#lock-message Please wait for the other player to answer.
+        button#lock-ok-btn OK
+        
     script(src="/scanqr.js")
