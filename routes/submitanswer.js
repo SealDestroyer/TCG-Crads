@@ -110,6 +110,7 @@ module.exports = (db) => {
 
     const { type, value, question_id, option_id } = req.body;
 
+    // Step 1: Get player role (to know opponent)
     const getPlayerQuery = `
       SELECT is_player_one 
       FROM game_players 
@@ -123,77 +124,94 @@ module.exports = (db) => {
 
       const isPlayerOne = result[0].is_player_one;
 
-      const insertAnswerQuery = `
-        INSERT INTO answers (student_id, question_id, option_id, game_id)
-        VALUES (?, ?, ?, ?)
-      `;
+      // Step 2: Check if the selected answer is correct
+      const correctnessQuery = `SELECT is_correct FROM question_option WHERE option_id = ?`;
 
-      db.query(insertAnswerQuery, [student_id, question_id, option_id, game_id], (err2) => {
-        if (err2) {
-          console.error("Failed to insert into answers table:", err2);
-          // Not blocking
+      db.query(correctnessQuery, [option_id], (errCheck, resultCheck) => {
+        if (errCheck || resultCheck.length === 0) {
+          return res.status(400).json({ success: false, message: "Invalid option." });
         }
-      });
 
-      if (type === "damage") {
-        const damageQuery = `
-          UPDATE game_players 
-          SET HP = GREATEST(0, HP - ?) 
-          WHERE game_id = ? AND is_player_one != ?
+        const isCorrect = resultCheck[0].is_correct === 1;
+
+        // Step 3: Record the answer
+        const insertAnswerQuery = `
+          INSERT INTO answers (student_id, question_id, option_id, game_id)
+          VALUES (?, ?, ?, ?)
         `;
 
-        db.query(damageQuery, [value, game_id, isPlayerOne], (err2) => {
-          if (err2) {
-            return res.status(500).json({ success: false, message: "Failed to damage opponent." });
+        db.query(insertAnswerQuery, [student_id, question_id, option_id, game_id], (errInsert) => {
+          if (errInsert) {
+            console.error("Failed to insert into answers table:", errInsert);
           }
+        });
 
-          const checkOpponentQuery = `
-            SELECT HP FROM game_players 
+        // Step 4: If wrong answer, stop here
+        if (!isCorrect) {
+          return res.json({ success: true, correct: false });
+        }
+
+        // Step 5: Apply effects if correct
+        if (type === "damage") {
+          const damageQuery = `
+            UPDATE game_players 
+            SET HP = GREATEST(0, HP - ?) 
             WHERE game_id = ? AND is_player_one != ?
           `;
 
-          db.query(checkOpponentQuery, [game_id, isPlayerOne], (err3, result3) => {
-            if (err3) {
-              return res.status(500).json({ success: false, message: "Failed to check opponent HP." });
+          db.query(damageQuery, [value, game_id, isPlayerOne], (err2) => {
+            if (err2) {
+              return res.status(500).json({ success: false, message: "Failed to apply damage." });
             }
 
-            const opponentHP = result3[0].HP;
+            const checkOpponentQuery = `
+              SELECT HP FROM game_players 
+              WHERE game_id = ? AND is_player_one != ?
+            `;
 
-            if (opponentHP === 0) {
-              const endGameQuery = `UPDATE game SET game_ended = 1 WHERE game_id = ?`;
+            db.query(checkOpponentQuery, [game_id, isPlayerOne], (err3, result3) => {
+              if (err3) {
+                return res.status(500).json({ success: false, message: "Failed to check opponent HP." });
+              }
 
-              db.query(endGameQuery, [game_id], (err4) => {
-                if (err4) {
-                  return res.status(500).json({ success: false, message: "Failed to end game." });
-                }
+              const opponentHP = result3[0].HP;
 
-                return res.json({ success: true, gameEnded: true });
-              });
+              if (opponentHP === 0) {
+                const endGameQuery = `UPDATE game SET game_ended = 1 WHERE game_id = ?`;
 
-            } else {
-              return res.json({ success: true });
-            }
+                db.query(endGameQuery, [game_id], (err4) => {
+                  if (err4) {
+                    return res.status(500).json({ success: false, message: "Failed to end game." });
+                  }
+
+                  return res.json({ success: true, correct: true, gameEnded: true });
+                });
+
+              } else {
+                return res.json({ success: true, correct: true });
+              }
+            });
           });
-        });
 
-      } else if (type === "heal") {
-        const healQuery = `
-          UPDATE game_players 
-          SET HP = LEAST(1000, HP + ?) 
-          WHERE game_id = ? AND student_id = ?
-        `;
+        } else if (type === "heal") {
+          const healQuery = `
+            UPDATE game_players 
+            SET HP = LEAST(1000, HP + ?) 
+            WHERE game_id = ? AND student_id = ?
+          `;
 
-        db.query(healQuery, [value, game_id, student_id], (err3) => {
-          if (err3) {
-            return res.status(500).json({ success: false, message: "Failed to heal." });
-          }
+          db.query(healQuery, [value, game_id, student_id], (err3) => {
+            if (err3) {
+              return res.status(500).json({ success: false, message: "Failed to apply healing." });
+            }
 
-          return res.json({ success: true });
-        });
+            return res.json({ success: true, correct: true });
+          });
 
-      } else {
-        return res.status(400).json({ success: false, message: "Invalid card type." });
-      }
+        } else {
+          return res.status(400).json({ success: false, message: "Invalid card type." });
+        }
+      });
     });
   });
 
