@@ -10,22 +10,30 @@ body {
 
 /* Scoreboard Container */
 .scoreboard-container {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: center;
-    height: 100vh;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center; /* ✅ Center everything vertically */
+  height: 101vh;
+  box-sizing: border-box;
+  margin-left: -22px; /* ✅ Keep if this centers your whole block */
+  position: relative; /* So we can absolutely position the timer */
 }
+
+
 
 /* Scoreboard Title Glowing Effect */
 h1 {
-    font-size: 2.5em;
-    font-weight: bold;
-    text-align: center;
-    color: #fff;
-    text-shadow: 0 0 10px #bf00ff, 0 0 20px #bf00ff, 0 0 30px #9400d3, 0 0 40px #9400d3;
-    animation: glow 1.5s infinite alternate;
+  font-size: 2.5em;
+  font-weight: bold;
+  text-align: center;
+  color: #fff;
+  text-shadow: 0 0 10px #bf00ff, 0 0 20px #bf00ff, 0 0 30px #9400d3, 0 0 40px #9400d3;
+  animation: glow 1.5s infinite alternate;
+  margin-bottom: 1px; /* ⬅️ Add this line to reduce space below title */
+  margin-top: 1px;
 }
+
 
 /* Neon Glow Animation */
 @keyframes glow {
@@ -40,17 +48,24 @@ h1 {
 
 /* Scoreboard Box */
 .scoreboard {
-    background: rgba(0, 0, 0, 0.8);
-    padding: 30px;
-    border-radius: 10px;
-    text-align: center;
-    box-shadow: 0 0 20px #bf00ff;
-    border: 2px solid #9400d3;
-    width: 350px;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
+  background: rgba(0, 0, 0, 0.8);
+  padding: 30px;
+  border-radius: 10px;
+  text-align: center;
+  border: 2px solid #00ffff;
+  box-shadow: 0 0 20px #00ffff;
+  animation: glowScoreboard 1.5s infinite alternate; /* 💡 add this line */
+  width: 350px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
 }
+
+@keyframes glowScoreboard {
+  from { box-shadow: 0 0 20px #00ffff; }
+  to { box-shadow: 0 0 35px #00ffff; }
+}
+
 
 /* Player Block */
 .player {
@@ -107,13 +122,21 @@ h1 {
     justify-content: center;
 }
 
-.separator-line hr {
+/* .separator-line hr {
     width: 90%;
     height: 3px;
     background: linear-gradient(90deg, #9400d3, #bf00ff);
     border: none;
     box-shadow: 0 0 10px rgba(165, 0, 255, 0.9), 0 0 15px rgba(165, 0, 255, 0.7);
     margin: 10px auto;
+} */
+.separator-line hr {
+  width: 90%;
+  height: 3px;
+  background: linear-gradient(90deg, #00eaff, #00ffff); /* neon blue gradient */
+  border: none;
+  box-shadow: 0 0 10px rgba(0, 255, 255, 0.9), 0 0 15px rgba(0, 255, 255, 0.7); /* blue glow */
+  margin: 10px auto;
 }
 
 /* Buttons */
@@ -121,32 +144,32 @@ h1 {
     display: flex;
     justify-content: center;
     gap: 20px; /* Adds spacing between buttons */
-    margin-top: 20px;
+    margin-top: 50px;
   }
-  
-  /* Ensure buttons are same size */
+
   .btn {
     padding: 15px 30px;
-    min-width: 180px; /* Force consistent width */
-    font-size: 1.2em;
+    min-width: 180px;
+    font-size: 1.3em;
     font-weight: bold;
-    border: 2px solid #a500ff;
+    border: 2px solid #00ffff; /* Neon blue border */
     border-radius: 5px;
     cursor: pointer;
-    background: #fff;
-    color: #a500ff;
-    text-shadow: 0 0 5px rgba(165, 0, 255, 0.5);
-    box-shadow: 0 0 10px rgba(165, 0, 255, 0.5);
+    background: #000; /* Dark background */
+    color: #fff;
+    text-shadow: 0 0 5px #00ffff;
+    box-shadow: 0 0 10px #00ffff;
     transition: all 0.3s ease;
     text-align: center;
+    text-decoration: none;
   }
   
   .btn:hover {
     transform: scale(1.05);
-    background: #a500ff;
-    color: #fff;
-    box-shadow: 0 0 10px rgba(165, 0, 255, 0.3), 0 0 15px rgba(165, 0, 255, 0.3);
+    color: #00ffff;
+    box-shadow: 0 0 12px #00ffff, 0 0 20px #00ffff;
   }
+  
   
 /* Winner Modal Styles */
 .modal {
@@ -194,5 +217,22 @@ h1 {
   #win-ok-btn:hover {
     background-color: #bf00ff;
     transform: scale(1.05);
+  }
+  
+
+  #game-timer {
+    position: absolute;
+    top: 10px; /* ⬅️ Adjust to place above monitor screen */
+    font-size: 3.2em;
+    font-weight: bold;
+    color: #00ffff;
+    text-align: center;
+    text-shadow: 0 0 12px #00ffff, 0 0 24px #00ffff;
+    animation: glowTimer 1.5s infinite alternate;
+  }
+  
+  @keyframes glowTimer {
+    from { text-shadow: 0 0 12px #00ffff; }
+    to { text-shadow: 0 0 24px #00ffff; }
   }
   
