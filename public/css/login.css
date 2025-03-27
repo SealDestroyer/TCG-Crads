@@ -6,16 +6,22 @@ body {
     height: 100vh;
     background: url('/img/lofi.webp') no-repeat center center/cover;
     font-family: Arial, sans-serif;
+    height: 100vh;
+    overflow: hidden; 
+    margin: 0; 
+    padding: 0; 
+    overflow: auto;
 }
 
 /* Login Box */
 .login-container {
-    background: rgba(128, 128, 128, 0.4); /* Semi-transparent gray */
+    background: rgba(128, 128, 128, 0.4); 
     border-radius: 20px;
     padding: 30px;
     width: 350px;
     text-align: center;
-    backdrop-filter: blur(10px); /* Glassmorphism effect */
+    backdrop-filter: blur(10px); 
+    max-width: 100%;
 }
 
 .login-title {
@@ -119,10 +125,58 @@ p.dont-have-account a:hover {
     opacity: 1;
 }
 
-
-/* Responsive */
-@media (max-width: 400px) {
+@media (max-width: 600px) {
     .login-container {
-        width: 90%;
+      width: 85%;    
+      max-width: 350px;            /* 🔥 same smooth breathing like 400px */
+      padding: 25px 20px;
+      margin: 25px auto;
     }
-}
+  
+    .login-title {
+      font-size: 24px;
+    }
+  
+    .input-field {
+      font-size: 16px;
+      padding: 10px 20px 10px 8px;
+    }
+  
+    .button {
+      font-size: 16px;
+      padding: 10px;
+    }
+  
+    .icon {
+      right: 10px;
+    }
+  }
+  
+  
+  @media (max-width: 400px) {
+    .login-container {
+      width: 85%;                  /* 🔧 was 90%, now more breathing room */
+      padding: 22px 18px;          /* 🔧 a bit more padding for comfort */
+      margin: 25px auto;           /* 🔧 extra space around the box */
+    }
+  
+    .login-title {
+      font-size: 22px;
+    }
+  
+    .input-field {
+      font-size: 15px;
+      padding: 10px 20px 10px 8px;
+    }
+  
+    .button {
+      font-size: 15px;
+      padding: 10px;
+    }
+  
+    .icon {
+      right: 10px;
+    }
+  }
+  
+  
