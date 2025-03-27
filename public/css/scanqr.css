@@ -245,3 +245,16 @@ h1 {
   transform: translateX(-10px); /* Slight left shift */
 }
 
+/* === QUESTION TIMER === */
+#question-timer {
+  font-size: 1.5em;
+  font-weight: bold;
+  color: #00ffff;
+  text-shadow: 0 0 10px #00ffff, 0 0 20px #00ffff;
+  animation: glowTimer 1.5s infinite alternate;
+}
+
+@keyframes glowTimer {
+  from { text-shadow: 0 0 10px #00ffff; }
+  to { text-shadow: 0 0 20px #00ffff; }
+}

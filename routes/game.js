@@ -107,13 +107,12 @@ module.exports = (db, checkLoggedIn) => {
         });
     });
 
-
     // ✅ Start the Match
     router.post('/startmatch', checkLoggedIn, (req, res) => {
         const studentId = req.session.student_id;
         const game_id = req.session.game_id;
 
-        const gameDuration = 2 * 60 * 1000; // 10 minutes in milliseconds
+        const gameDuration = 1 * 60 * 1000; // 10 minutes in milliseconds
         const endTime = new Date(Date.now() + gameDuration);
 
         const query = `

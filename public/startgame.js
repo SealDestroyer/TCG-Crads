@@ -127,4 +127,35 @@ $(document).ready(function () {
 
     // ✅ Start polling (timer starts from gamestate)
     gamePolling = setInterval(pollGameState, 2000);
+
+    // ✅ New: Check game-ended immediately on page load (in case user just arrived here)
+    $.get("/gamestate", function (res) {
+        if (res && res.game_ended) {
+            clearInterval(gamePolling);
+            clearInterval(timerInterval);
+
+            if (res.player_one_hp === 0 && res.player_two_hp === 0) {
+                showTieModal();
+            } else if (res.player_one_hp === 0) {
+                showWinnerModal(res.player_two_name);
+            } else if (res.player_two_hp === 0) {
+                showWinnerModal(res.player_one_name);
+            }
+        }
+    });
+
+    const urlParams = new URLSearchParams(window.location.search);
+    const result = urlParams.get("result");
+    const name = urlParams.get("name");
+
+    if (result === "tie") {
+    $("#winner-name").text("It's a Tie!");
+    $("#winModal h2").text("Tie Match!");
+    $("#winModal").fadeIn();
+    } else if (result === "win" && name) {
+    $("#winner-name").text(name);
+    $("#winModal h2").text("Congratulations Winner!");
+    $("#winModal").fadeIn();
+    }
+
 });
