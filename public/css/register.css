@@ -6,6 +6,10 @@
         height: 100vh;
         background: url('/img/lofi.webp') no-repeat center center/cover;
         font-family: Arial, sans-serif;
+        overflow: hidden; 
+        margin: 0; 
+        padding: 0; 
+        overflow: auto;
     }
 
     /* Registration Box */
@@ -16,9 +20,9 @@
         width: 350px;
         text-align: center;
         backdrop-filter: blur(10px); /* Glassmorphism effect */
+        max-width: 100%;
     }
-
-
+    
     .register-title {
         font-size: 24px;
         font-weight: bold;
@@ -120,10 +124,56 @@
         opacity: 1 !important;   /* Visible when active */
     }
 
-
     /* Responsive */
+    @media (max-width: 600px) {
+        .register-container {
+            width: 85%;
+            max-width: 350px;            /* Ensures good breathing room */
+            padding: 25px 20px;
+            margin: 25px auto;
+        }
+
+        .register-title {
+            font-size: 24px;
+        }
+
+        .input-field {
+            font-size: 16px;
+            padding: 10px 20px 10px 8px;
+        }
+
+        .button {
+            font-size: 16px;
+            padding: 10px;
+        }
+
+        .icon {
+            right: 10px;
+        }
+    }
+
     @media (max-width: 400px) {
         .register-container {
-            width: 90%;
+            width: 85%;
+            padding: 22px 18px;
+            margin: 25px auto;
+        }
+
+        .register-title {
+            font-size: 22px;
+        }
+
+        .input-field {
+            font-size: 15px;
+            padding: 10px 20px 10px 8px;
+        }
+
+        .button {
+            font-size: 15px;
+            padding: 10px;
+        }
+
+        .icon {
+            right: 10px;
         }
     }
