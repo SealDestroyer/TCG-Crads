@@ -187,16 +187,22 @@ h1 {
   #winModal .modal-content {
     background-color: #222;
     margin: 0 auto;
-    margin-top: 38vh; /* ⬅️ Moves modal down */
-    padding: 20px;
-    border: 1px solid #444;
-    width: 300px;
+    margin-top: 28vh;
+    padding: 25px;
+    border: 2px solid #00ffff;
     border-radius: 10px;
+    width: 350px;
     text-align: center;
-    box-shadow: 0 0 20px #bf00ff;
+    box-shadow: 0 0 25px #00ffff;
+    animation: glowWinModal 1.5s infinite alternate;
     color: #fff;
-    position: relative;
+    transform: translateX(-11px); /* ✅ clean and flexible */
   }
+  
+  @keyframes glowWinModal {
+    from { box-shadow: 0 0 20px #00ffff; }
+    to { box-shadow: 0 0 35px #00ffff; }
+  }  
   
   #winner-name {
     font-size: 1.4em;
@@ -204,21 +210,25 @@ h1 {
   }
   
   #win-ok-btn {
-    padding: 10px 20px;
-    background-color: #9400d3;
+    display: block;
+    margin: 20px auto 0; /* center horizontally */
+    padding: 12px 25px;
+    background-color: #00ffff;
     border: none;
     border-radius: 5px;
     font-weight: bold;
-    color: #fff;
+    color: #000;
+    font-size: 1em;
     cursor: pointer;
-    transition: background-color 0.3s ease, transform 0.3s ease;
+    box-shadow: 0 0 12px #00ffff;
+    transition: all 0.3s ease;
+    text-align: center;
   }
   
   #win-ok-btn:hover {
-    background-color: #bf00ff;
     transform: scale(1.05);
+    box-shadow: 0 0 20px #00ffff;
   }
-  
 
   #game-timer {
     position: absolute;
