@@ -59,9 +59,9 @@ module.exports = (db, checkLoggedIn) => {
         }
 
         const query = `
-            SELECT g.game_started, g.game_ended,
-                   gp.HP, gp.is_player_one, gp.student_id,
-                   s.name
+            SELECT g.game_started, g.game_ended, g.game_end_time, 
+                gp.HP, gp.is_player_one, gp.student_id,
+                s.name
             FROM game_players gp
             JOIN student s ON gp.student_id = s.student_ID 
             JOIN game g ON g.game_id = gp.game_id
@@ -78,6 +78,7 @@ module.exports = (db, checkLoggedIn) => {
             let is_player_one = false;
             const game_started = results[0].game_started;
             const game_ended = results[0].game_ended;
+            const game_end_time = results[0].game_end_time; 
 
             results.forEach(player => {
                 if (player.is_player_one) {
@@ -100,26 +101,31 @@ module.exports = (db, checkLoggedIn) => {
                 player_two_hp,
                 is_player_one,
                 game_started,
-                game_ended
+                game_ended,
+                game_end_time 
             });
         });
     });
+
 
     // ✅ Start the Match
     router.post('/startmatch', checkLoggedIn, (req, res) => {
         const studentId = req.session.student_id;
         const game_id = req.session.game_id;
 
+        const gameDuration = 2 * 60 * 1000; // 10 minutes in milliseconds
+        const endTime = new Date(Date.now() + gameDuration);
+
         const query = `
             UPDATE game 
-            SET game_started = 1 
+            SET game_started = 1, game_end_time = ?
             WHERE game_id = ? AND EXISTS (
                 SELECT 1 FROM game_players 
                 WHERE student_id = ? AND game_id = ? AND is_player_one = 1
             )
         `;
 
-        db.query(query, [game_id, studentId, game_id], (err) => {
+        db.query(query, [endTime, game_id, studentId, game_id], (err) => {
             if (err) {
                 console.error("Error starting match:", err);
                 return res.json({ success: false, message: "Failed to start match." });
@@ -242,21 +248,15 @@ module.exports = (db, checkLoggedIn) => {
                     return res.json({ success: true, tie: true });
                 });
             } else {
-                const loser = p1.HP < p2.HP ? p1 : p2;
                 const winner = p1.HP > p2.HP ? p1 : p2;
 
-                const setLoserHP = `UPDATE game_players SET HP = 0 WHERE student_id = ? AND game_id = ?`;
-                const endGame = `UPDATE game SET game_ended = 1 WHERE game_id = ?`;
-
-                // ⚔️ End game and return winner's name
-                db.query(setLoserHP, [loser.student_id, game_id], () => {
-                    db.query(endGame, [game_id], () => {
-                        return res.json({ success: true, winner_name: winner.name });
-                    });
+                db.query(`UPDATE game SET game_ended = 1 WHERE game_id = ?`, [game_id], () => {
+                    return res.json({ success: true, winner_name: winner.name });
                 });
             }
         });
     });
+
 
     // ✅ New Scan QR UI Route
     router.get('/scanqr', checkLoggedIn, (req, res) => {
