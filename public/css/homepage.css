@@ -60,18 +60,36 @@ nav.menu .nav-links a:hover {
   padding: 30px;
   border-radius: 10px;
 }
+.center-content {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+  width: 100%;
+}
+
 .center-content h1 {
   font-size: 4em;
-  margin-bottom: 20px;
+  margin-bottom: 8px;
+  margin-left: 5px;
 }
+
 .center-content p {
   font-size: 1.2em;
   margin-bottom: 30px;
+  word-wrap: break-word; 
+  max-width: 800px;         /* limit line width */
+  margin: 0 auto;           /* center it horizontally */
+  word-wrap: break-word;    /* allow long words to break */
+  line-height: 1.6; 
 }
+
 .btn-container {
+  margin-top: 20px;
   display: flex;
   justify-content: center;
-  gap: 20px;
+  gap: 15px;
+  margin-left: -35px;
 }
 
 /* Neon Effect Button Styles */
@@ -88,6 +106,7 @@ nav.menu .nav-links a:hover {
   text-shadow: 0 0 5px rgba(165, 0, 255, 0.5);
   box-shadow: 0 0 10px rgba(165, 0, 255, 0.5);
 }
+
 .btn:hover {
   transform: scale(1.05);
   background: #a500ff;
@@ -113,7 +132,7 @@ nav.menu .nav-links a:hover {
 /* Modal content box with glowing effect */
 .modal-content {
   background-color: #222;
-  margin: 15% auto;
+  transform: translateX(-17px); 
   padding: 20px;
   border: 1px solid #444;
   width: 300px;
@@ -122,6 +141,8 @@ nav.menu .nav-links a:hover {
   box-shadow: 0 0 20px #bf00ff;
   color: #fff;
   position: relative;
+  margin: 0 auto;
+  margin-top: 33vh;  ;
 }
 
 /* Close button styling */
@@ -197,3 +218,11 @@ nav.menu .nav-links a:hover {
   background-color: #bf00ff;
   transform: scale(1.05);
 }
+
+/* New Class to Flex-Center Modal */
+.show-modal {
+  display: flex !important; /* override inline styles */
+  justify-content: center;
+  align-items: center;
+}
+

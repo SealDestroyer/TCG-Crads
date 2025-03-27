@@ -1,10 +1,10 @@
 // $(document).ready(function() {
 //   // Preload background image
 //   let bgImage = new Image();
-//   bgImage.src = "/img/study.jpg";
+//   bgImage.src = "/img/studybeta.jpg";
 //   bgImage.onload = function() {
 //     $("body").css({
-//       "background-image": "url('/img/study.jpg')",
+//       "background-image": "url('/img/studybeta.jpg')",
 //       "background-size": "cover",
 //       "background-repeat": "no-repeat",
 //       "background-position": "center center",
@@ -46,7 +46,7 @@
 //   $("#modal-join-btn").click(function() {
 //     const pin_code = $("#join-pin").val().trim();
 //     if (pin_code === "") {
-//       showValidationModal("Please enter a game pin code.", false);
+//       showValidationModal("Please enter a game pin code", false);
 //       return;
 //     }
 //     $.ajax({
@@ -67,11 +67,11 @@
 //     });
 //   });
 
-//   // When the OK button in the nested validation modal is clicked
+//   // When the OK button in the nested validation modal is clicked, immediately redirect
 //   $("#validation-ok-btn").click(function() {
 //     var redirectUrl = $("#validationModal").data("redirect");
-//     $("#validationModal").fadeOut();
-//     $("#joinModal").fadeOut();
+//     $("#validationModal").hide();
+//     $("#joinModal").hide();
 //     if (redirectUrl) {
 //       window.location.href = redirectUrl;
 //     } else {
@@ -98,7 +98,6 @@
 //     $("#validationModal").fadeIn();
 //   }
 // });
-
 
 $(document).ready(function() {
   // Preload background image
