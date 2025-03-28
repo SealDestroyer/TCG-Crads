@@ -7,19 +7,22 @@ html
     meta(name="viewport" content="width=device-width, initial-scale=1.0")
     link(rel="stylesheet", href="/css/homepage.css")
   body
-    //- Temporary test element for Student ID
-    //- p.student-id Student ID: #{student_ID}
-    
-    //- Hidden-style menu bar
     nav.menu
       div.logo TCG
+      div#burger-icon ☰
       div.nav-links
         a(href="#profile") Profile
         a(href="#history") History
         a(href="#home") Home
         a(href="/login") Logout
 
-    //- Center content: title, description and buttons
+    // Sidebar for mobile (initially hidden)
+    div#sidebar
+      a(href="#profile") Profile
+      a(href="#history") History
+      a(href="#home") Home
+      a(href="/login") Logout
+
     .center-content
       h1 TCG Cards
       p Welcome #{name}! Enter the arena of TCG Cards – where strategic battles await. Gear up, outsmart your rivals, and fight for glory!
@@ -27,14 +30,13 @@ html
         button.btn#start-btn(type="button") Start
         button.btn#join-btn(type="button") Join
 
-    //- Modal for Join Game
+    // Modal for Join Game
     div#joinModal.modal
       div.modal-content
         span.close-button &times;
         h2 Join Game
         input(type="text", id="join-pin", placeholder="Enter game pin code")
         button(type="button", id="modal-join-btn") Join Game
-        //- Nested Validation Modal (initially hidden)
         div#validationModal.validation-modal
           div.validation-content
             p#validation-message

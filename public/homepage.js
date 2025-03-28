@@ -143,6 +143,10 @@ $(document).ready(function() {
     $("#joinModal").fadeOut();
   });
 
+  $('#burger-icon').click(function () {
+    $('#sidebar').toggleClass('open');
+  });
+  
   // Handle join submission from within the join modal
   $("#modal-join-btn").click(function() {
     const pin_code = $("#join-pin").val().trim();
