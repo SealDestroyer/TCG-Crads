@@ -19,6 +19,13 @@ body {
   margin-right: 25px;
 }
 
+.scanqr-wrapper {
+  width: 100%;
+  box-sizing: border-box;
+  padding: 0;           /* no extra padding */
+  margin: 0 auto;
+}
+
 /* === GLOWING TITLE === */
 h1 {
   font-size: 2.5em;
@@ -69,6 +76,11 @@ h1 {
 #reader__scan_region {
   border: none !important;
   box-shadow: none !important;
+}
+
+.reader-box {
+  display: block;
+  width: auto;
 }
 
 /* === MODAL STYLE FOR QUESTION === */
@@ -258,79 +270,105 @@ h1 {
   from { text-shadow: 0 0 10px #00ffff; }
   to { text-shadow: 0 0 20px #00ffff; }
 }
-
+/* ======== Mobile Responsive: max 600px ======== */
 @media (max-width: 600px) {
-  .scanner-container {
-    margin: 0 auto;                  /* fix alignment */
-    width: 100%;
-    padding: 20px;
-    box-sizing: border-box;
+  .scanqr-wrapper {
+    display: flex;
+    flex-direction: column;
     align-items: center;
+    justify-content: flex-start;
+    min-height: 100vh;
+    padding: 30px 20px 20px;
+    box-sizing: border-box;
+  }
+
+  .scanner-container {
+    width: 100%;
+    max-width: 320px;
+    margin: 0 auto;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    box-sizing: border-box;
+  }
+
+  .reader-box {
+    width: 100%;
+    max-width: 320px;
+    margin: 0 auto;
+    display: flex;
     justify-content: center;
+    align-items: center;
+    box-sizing: border-box;
   }
 
   h1 {
     font-size: 2em;
     text-align: center;
-    word-wrap: break-word;
+    margin: 0 auto 16px;
     max-width: 90%;
-    margin: 0 auto 20px;
+    word-wrap: break-word;
   }
 
   #reader {
-    width: 90%;
-    max-width: 320px;
+    width: 100%;
+    max-width: 100%;
     height: 240px;
+    display: block;
     margin: 0 auto;
-    display: flex;
-    justify-content: center;
-    align-items: center;
+    box-sizing: border-box;
   }
 
   .buttons-container {
+    width: 100%;
+    max-width: 320px;
+    margin: 2px auto 0;     /* 🔼 Pull up the button slightly */
+    padding-left: 18px;      /* 👉 Nudge to center */
+    display: flex;
     flex-direction: column;
     align-items: center;
-    gap: 15px;
-    margin-top: 30px;
+    gap: 12px;
+    box-sizing: border-box;
   }
 
-  .btn, .back-btn {
+  .btn,
+  .back-btn {
     width: 200px;
     font-size: 1.2em;
     padding: 12px 20px;
-    margin: 0 auto;
   }
 
   .modal-content {
     width: 85% !important;
     max-width: 300px;
     padding: 22px 18px !important;
-    margin-top: 25vh !important;
+    margin-top: 18vh !important;
     margin-left: auto !important;
     margin-right: auto !important;
     transform: none !important;
     max-height: 75vh;
     overflow-y: auto;
   }
+
+  #resultModal .modal-content {
+    margin-top: 30vh !important; /* was 25vh */
+  }
+  #lockModal .modal-content {
+    margin-top: 30vh !important; /* or 35vh if you want lower */
+  }
+  
 }
 
-/* Breakpoint: Max 400px */
+/* ======== Max 400px ======== */
 @media (max-width: 400px) {
   h1 {
     font-size: 1.7em;
-    margin-bottom: 18px;
-    max-width: 90%;
+    margin-bottom: 16px;
   }
 
   #reader {
-    width: 90%;
-    max-width: 300px;
     height: 220px;
-  }
-
-  .modal-content {
-    max-width: 280px;
-    padding: 20px 16px !important;
+    max-width: 290px;
   }
 
   .btn,
@@ -339,23 +377,22 @@ h1 {
     font-size: 1.1em;
     padding: 10px 16px;
   }
+
+  .modal-content {
+    max-width: 280px;
+    padding: 20px 16px !important;
+  }
 }
 
-/* Breakpoint: Max 320px */
+/* ======== Max 320px ======== */
 @media (max-width: 320px) {
   h1 {
     font-size: 1.5em;
   }
 
   #reader {
-    width: 95%;
-    max-width: 270px;
     height: 200px;
-  }
-
-  .modal-content {
     max-width: 260px;
-    padding: 18px 14px !important;
   }
 
   .btn,
@@ -364,9 +401,69 @@ h1 {
     font-size: 1em;
     padding: 10px 14px;
   }
+
+  .modal-content {
+    max-width: 260px;
+    padding: 18px 14px !important;
+  }
 }
 
-/* === TOUCH DEVICES: REMOVE HOVER ANIMATION === */
+/* ======== Max 300px ======== */
+@media (max-width: 300px) {
+  h1 {
+    font-size: 1.4em;
+  }
+
+  #reader {
+    height: 180px;
+    max-width: 240px;
+  }
+
+  .btn,
+  .back-btn {
+    width: 160px;
+    font-size: 0.95em;
+    padding: 8px 12px;
+  }
+
+  .modal-content {
+    max-width: 240px;
+    padding: 16px 12px !important;
+  }
+}
+
+/* ======== Max 280px: final micro-fix for drift & spacing ======== */
+@media (max-width: 280px) {
+  .scanner-container,
+  .reader-box,
+  .buttons-container {
+    width: 95%;
+    max-width: 240px;
+    margin: 0 auto;
+    box-sizing: border-box;
+  }
+
+  #reader {
+    height: 170px;
+    max-width: 100%;
+    margin: 0 auto;
+  }
+
+  .btn,
+  .back-btn {
+    width: 150px;
+    font-size: 0.9em;
+    padding: 8px 10px;
+  }
+
+  h1 {
+    font-size: 1.3em;
+    text-align: center;
+    margin: 0 auto 14px;
+  }
+}
+
+/* ======== Disable hover effects on touch devices ======== */
 @media (hover: none) and (pointer: coarse) {
   .btn:hover,
   .option-btn:hover,

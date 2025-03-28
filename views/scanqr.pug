@@ -8,16 +8,18 @@ html
     script(src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js")
     script(src="/html5-qrcode.min.js") <!-- QR scanner lib -->
   body
-    .scanner-container
-      h1 Scan Your Card
-      #reader(style="width: 530px; height: 320px;")
+    .scanqr-wrapper
+      .scanner-container
+        h1 Scan Your Card
+        .reader-box
+          #reader(style="width: 530px; height: 320px;")
 
-    .buttons-container
-         a.btn.back-btn(href="/startgame") Back
+      .buttons-container
+        a.btn.back-btn(href="/startgame") Back
 
     // Modal (hidden initially)
-    div#questionModal.modal(style="display: none;")
-      div.modal-content
+    #questionModal.modal(style="display: none;")
+      .modal-content
         h2 Question
         h3#question-timer(style="margin: 0 0 10px 0;") 30s
         p#question-text
@@ -26,19 +28,19 @@ html
           button.option-btn Option B
           button.option-btn Option C
           button.option-btn Option D
-          
+
     // Answer Result Modal (Correct or Wrong)
-    div#resultModal.modal(style="display: none;")
-      div.modal-content
+    #resultModal.modal(style="display: none;")
+      .modal-content
         h2#result-title
         p#result-message
         button#result-ok-btn OK
 
     // Lock Modal - shown if opponent is answering
-    div#lockModal.modal(style="display: none;")
-      div.modal-content
+    #lockModal.modal(style="display: none;")
+      .modal-content
         h2 Hold Up!
         p#lock-message Please wait for the other player to answer.
         button#lock-ok-btn OK
-        
+
     script(src="/scanqr.js")
