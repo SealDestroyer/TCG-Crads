@@ -1,0 +1,209 @@
+body {
+    font-family: Arial, sans-serif;
+    background: url('/img/test.jpg') no-repeat center center fixed;
+    background-size: cover;
+    margin: 0;
+    padding: 0;
+    color: #fff;
+    overflow-x: hidden;
+  }
+  
+  /* ==== PROFILE BOX ==== */
+  .profile-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    padding-top: 80px;
+    box-sizing: border-box;
+  }
+  
+  .profile-box {
+    background-color: rgba(0, 0, 0, 0.8);
+    border: 2px solid #bf00ff;
+    box-shadow: 0 0 25px #bf00ff;
+    border-radius: 20px;
+    padding: 40px 30px;
+    width: 90%;
+    max-width: 420px;
+    text-align: center;
+    animation: glowBox 1.5s infinite alternate;
+  }
+  
+  @keyframes glowBox {
+    from { box-shadow: 0 0 20px #bf00ff; }
+    to { box-shadow: 0 0 35px #bf00ff; }
+  }
+  
+  .profile-pic-wrapper {
+    margin-bottom: 25px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+  }
+  
+  #profile-pic {
+    width: 100px;
+    height: 100px;
+    object-fit: cover;
+    border-radius: 50%;
+    border: 2px solid #bf00ff;
+    box-shadow: 0 0 10px #bf00ff;
+  }
+
+  
+  /* ==== FLOATING INPUT ==== */
+  .form-group {
+    position: relative;
+    margin-bottom: 20px;
+  }
+  
+  .input-field {
+    width: 100%;
+    border: none;
+    border-bottom: 2px solid #fff;
+    background: transparent;
+    font-size: 16px;
+    padding: 10px 30px 10px 5px;
+    outline: none;
+    color: #fff;
+  }
+  
+  .input-field::placeholder {
+    color: transparent;
+  }
+  
+  .input-label {
+    position: absolute;
+    top: 10px;
+    left: 5px;
+    font-size: 16px;
+    color: #ccc;
+    transition: 0.3s ease;
+  }
+  
+.input-field:focus + .input-label,
+.input-field:not(:placeholder-shown) + .input-label,
+select.input-field:valid + .input-label {
+  top: -10px;
+  font-size: 12px;
+  color: #bf00ff;
+}
+  
+.upload-btn {
+    margin-top: 10px;
+    padding: 10px 20px;
+    background-color: #bf00ff;
+    color: #fff;
+    font-weight: bold;
+    border-radius: 5px;
+    cursor: pointer;
+    font-size: 0.95em;
+    box-shadow: 0 0 12px #bf00ff;
+    transition: all 0.3s ease;
+    display: block;            /* <--- was inline-block */
+    text-align: center;
+    width: fit-content;        /* <--- allow width to auto-fit text */
+    margin-left: auto;         /* center horizontally */
+    margin-right: auto;        /* center horizontally */
+  }
+  
+.upload-btn:hover {
+    background-color: #a100e2;
+    transform: scale(1.05);
+    box-shadow: 0 0 16px #bf00ff;
+  }
+  
+  input[type="file"]#upload-pic {
+    display: none !important;
+  }
+  
+  .form-buttons {
+    display: flex;
+    justify-content: center;
+    gap: 20px;
+    margin-top: 25px;
+  }
+  
+  .btn {
+    padding: 12px 0;                    /* vertical padding only */
+    width: 120px;                       /* same fixed width for both */
+    background-color: #bf00ff;
+    border: none;
+    border-radius: 5px;
+    font-weight: bold;
+    color: #000;
+    font-size: 1em;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    box-shadow: 0 0 12px #bf00ff;
+    text-align: center;
+  }
+  
+  .btn:hover {
+    background-color: #a100e2;
+    transform: scale(1.05);
+    box-shadow: 0 0 16px #bf00ff;
+  }
+  
+/* Make select same style as input fields (no glow by default) */
+select.input-field {
+    width: 100%;
+    border: none;
+    border-bottom: 2px solid #fff;
+    background: transparent;
+    font-size: 16px;
+    padding: 10px 30px 10px 5px;
+    color: #fff;
+    outline: none;
+    appearance: none;
+    transition: all 0.3s ease;
+    box-shadow: none; /* ❌ remove permanent glow */
+  }
+  
+  /* Label moves up on valid or focus */
+  .input-field:focus + .input-label,
+  select.input-field:valid + .input-label {
+    top: -10px;
+    font-size: 12px;
+    color: #bf00ff;
+  }
+  
+  /* Only show purple glow when actively focused */
+  select.input-field:focus {
+    border-bottom: 2px solid #bf00ff;
+    box-shadow: 0 0 10px #bf00ff;
+  }
+  
+  /* Optional: extra glow when user has chosen a value */
+  select.input-field:valid:focus {
+    box-shadow: 0 0 12px #bf00ff;
+  }
+  
+/* This applies when dropdown is open */
+select.input-field option {
+    background-color: #000;
+    color: #fff;
+    padding: 10px;
+    font-size: 16px;
+  }
+  
+  select.input-field option:hover {
+    background-color: #bf00ff;
+    color: #000;
+    cursor: pointer;
+  }
+  
+  
+
+.input-field:focus + .input-label,
+.input-field:not(:placeholder-shown) + .input-label,
+select.input-field:valid + .input-label {
+  top: -10px;
+  font-size: 12px;
+  color: #bf00ff;
+}
+
+  
+  
+  

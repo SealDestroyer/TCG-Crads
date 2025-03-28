@@ -1,0 +1,48 @@
+doctype html
+html
+  head
+    title TCG Profile
+    meta(charset="utf-8")
+    meta(name="viewport" content="width=device-width, initial-scale=1.0")
+    // Load shared navbar/sidebar styles first
+    link(rel="stylesheet", href="/css/homepage.css")
+    // Then load your page-specific custom styles (overrides)
+    link(rel="stylesheet", href="/css/profile.css")
+    script(src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js")
+    
+  body
+    include _navbar.pug
+
+    .profile-container
+      .profile-box
+        .profile-pic-wrapper
+        img#profile-pic(src="/img/panda.jpg", alt="Profile Picture")
+        input(type="file", id="upload-pic", accept="image/*", class="file-input")
+        label.upload-btn(for="upload-pic") Choose File
+
+        form
+          .form-group
+            input.input-field(type="text", id="name", name="name", placeholder=" ", required)
+            label.input-label(for="name") Name
+
+          .form-group
+            input.input-field(type="email", id="email", name="email", placeholder=" ", required)
+            label.input-label(for="email") Email
+
+          .form-group
+            input.input-field(type="text", id="contact", name="contact", placeholder=" ")
+            label.input-label(for="contact") Contact
+
+          .form-group
+            select.input-field(id="gender", name="gender")
+              option(value="") Select Gender
+              option(value="male") Male
+              option(value="female") Female
+            label.input-label(for="gender") Gender
+
+          .form-buttons
+            button.btn.save-btn(type="submit") Save
+            button.btn.delete-btn(type="button") Delete
+
+
+    script(src="/profile.js")

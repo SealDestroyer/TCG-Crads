@@ -25,16 +25,23 @@ nav.menu {
   width: 100%;
   background: transparent;
 }
+
 nav.menu .logo {
   font-size: 2em;
   font-weight: bold;
   cursor: pointer;
+  color: #fff;
+  text-decoration: none;
   transition: transform 0.3s, text-shadow 0.3s;
+  display: inline-block;
 }
+
 nav.menu .logo:hover {
   transform: translateY(-5px);
   text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
 }
+
+
 nav.menu .nav-links {
   display: flex;
   gap: 30px;

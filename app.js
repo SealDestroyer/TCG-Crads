@@ -87,6 +87,7 @@ app.get('/login', (req, res) => { res.render('login'); });
 app.get('/game', (req, res) => { res.render('game'); });
 app.get('/startgame', (req, res) => { res.render('startgame'); });
 app.get('/scanqr', (req, res) => { res.render('scanqr'); });
+app.get('/profile', (req, res) => { res.render('profile'); });
 
 // Starts the server on port 3000 and logs a message to the console when the server is running.
 app.listen(4000, function () {

@@ -7,21 +7,7 @@ html
     meta(name="viewport" content="width=device-width, initial-scale=1.0")
     link(rel="stylesheet", href="/css/homepage.css")
   body
-    nav.menu
-      div.logo TCG
-      div#burger-icon ☰
-      div.nav-links
-        a(href="#profile") Profile
-        a(href="#history") History
-        a(href="#home") Home
-        a(href="/login") Logout
-
-    // Sidebar for mobile (initially hidden)
-    div#sidebar
-      a(href="#profile") Profile
-      a(href="#history") History
-      a(href="#home") Home
-      a(href="/login") Logout
+    include _navbar.pug
 
     .center-content
       h1 TCG Cards
