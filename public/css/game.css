@@ -91,3 +91,55 @@ body {
   opacity: 0.6;
   cursor: not-allowed;
 }
+
+#start-game:active,
+#cancel-game:active,
+.btn:active {
+  background-color: #bf00ff;
+  color: #fff;
+  transform: scale(0.97); /* subtle tap-down feel */
+  box-shadow: 0 0 16px #bf00ff;
+  transition: all 0.1s ease-in-out;
+}
+
+/* ======== Mobile Responsive for game.pug ======== */
+@media (max-width: 600px) {
+  .buttons-container {
+    flex-direction: column;
+    align-items: center;
+    gap: 15px;
+    margin-top: 30px;
+    max-width: 320px;
+    width: 90%;
+  }
+
+  .buttons-container .btn {
+    width: 200px;
+  }
+
+  .btn:hover {
+    transform: none !important; /* Disable hover animation on mobile */
+    box-shadow: none !important;
+    color: inherit;
+    background: inherit;
+  }
+
+
+  /* Disable hover styling on mobile touch screens */
+  @media (hover: none) and (pointer: coarse) {
+    #start-game:hover,
+    #cancel-game:hover {
+      background: #fff !important;
+      color: #a500ff !important;
+      box-shadow: 0 0 10px rgba(165, 0, 255, 0.5) !important;
+      text-shadow: 0 0 5px rgba(165, 0, 255, 0.5) !important;
+      border: 2px solid #a500ff !important;
+    }
+
+    #start-game:active,
+    #cancel-game:active {
+      transform: scale(0.97);
+      transition: 0.1s ease-in-out;
+    }
+  }
+}
