@@ -258,3 +258,132 @@ h1 {
   from { text-shadow: 0 0 10px #00ffff; }
   to { text-shadow: 0 0 20px #00ffff; }
 }
+
+@media (max-width: 600px) {
+  .scanner-container {
+    margin: 0 auto;                  /* fix alignment */
+    width: 100%;
+    padding: 20px;
+    box-sizing: border-box;
+    align-items: center;
+    justify-content: center;
+  }
+
+  h1 {
+    font-size: 2em;
+    text-align: center;
+    word-wrap: break-word;
+    max-width: 90%;
+    margin: 0 auto 20px;
+  }
+
+  #reader {
+    width: 90%;
+    max-width: 320px;
+    height: 240px;
+    margin: 0 auto;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+
+  .buttons-container {
+    flex-direction: column;
+    align-items: center;
+    gap: 15px;
+    margin-top: 30px;
+  }
+
+  .btn, .back-btn {
+    width: 200px;
+    font-size: 1.2em;
+    padding: 12px 20px;
+    margin: 0 auto;
+  }
+
+  .modal-content {
+    width: 85% !important;
+    max-width: 300px;
+    padding: 22px 18px !important;
+    margin-top: 25vh !important;
+    margin-left: auto !important;
+    margin-right: auto !important;
+    transform: none !important;
+    max-height: 75vh;
+    overflow-y: auto;
+  }
+}
+
+/* Breakpoint: Max 400px */
+@media (max-width: 400px) {
+  h1 {
+    font-size: 1.7em;
+    margin-bottom: 18px;
+    max-width: 90%;
+  }
+
+  #reader {
+    width: 90%;
+    max-width: 300px;
+    height: 220px;
+  }
+
+  .modal-content {
+    max-width: 280px;
+    padding: 20px 16px !important;
+  }
+
+  .btn,
+  .back-btn {
+    width: 180px;
+    font-size: 1.1em;
+    padding: 10px 16px;
+  }
+}
+
+/* Breakpoint: Max 320px */
+@media (max-width: 320px) {
+  h1 {
+    font-size: 1.5em;
+  }
+
+  #reader {
+    width: 95%;
+    max-width: 270px;
+    height: 200px;
+  }
+
+  .modal-content {
+    max-width: 260px;
+    padding: 18px 14px !important;
+  }
+
+  .btn,
+  .back-btn {
+    width: 170px;
+    font-size: 1em;
+    padding: 10px 14px;
+  }
+}
+
+/* === TOUCH DEVICES: REMOVE HOVER ANIMATION === */
+@media (hover: none) and (pointer: coarse) {
+  .btn:hover,
+  .option-btn:hover,
+  #result-ok-btn:hover,
+  #lock-ok-btn:hover {
+    transform: none !important;
+    box-shadow: none !important;
+    background: #00ffff !important;
+    color: #000 !important;
+  }
+
+  .btn:active,
+  .option-btn:active,
+  #result-ok-btn:active,
+  #lock-ok-btn:active {
+    transform: scale(0.97);
+    box-shadow: 0 0 16px #00ffff;
+    transition: 0.1s ease-in-out;
+  }
+}
