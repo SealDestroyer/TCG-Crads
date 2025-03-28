@@ -6,6 +6,7 @@ body {
     color: #fff;
     margin: 0;
     padding: 0;
+    overflow: hidden;
 }
 
 /* Scoreboard Container */
@@ -16,7 +17,7 @@ body {
   justify-content: center; /* ✅ Center everything vertically */
   height: 101vh;
   box-sizing: border-box;
-  margin-left: -22px; /* ✅ Keep if this centers your whole block */
+  margin-left: -22px; 
   position: relative; /* So we can absolutely position the timer */
 }
 
@@ -122,14 +123,6 @@ h1 {
     justify-content: center;
 }
 
-/* .separator-line hr {
-    width: 90%;
-    height: 3px;
-    background: linear-gradient(90deg, #9400d3, #bf00ff);
-    border: none;
-    box-shadow: 0 0 10px rgba(165, 0, 255, 0.9), 0 0 15px rgba(165, 0, 255, 0.7);
-    margin: 10px auto;
-} */
 .separator-line hr {
   width: 90%;
   height: 3px;
@@ -245,4 +238,130 @@ h1 {
     from { text-shadow: 0 0 12px #00ffff; }
     to { text-shadow: 0 0 24px #00ffff; }
   }
-  
+
+  #qr-scanner:active,
+  #exit-game:active,
+  #win-ok-btn:active,
+  .btn:active {
+    background-color: #00ffff;
+    color: #000;
+    transform: scale(0.97);
+    box-shadow: 0 0 16px #00ffff;
+    transition: all 0.1s ease-in-out;
+  }
+
+/* ======== Mobile Responsive for startgame.pug ======== */
+@media (max-width: 650px) {
+  .scoreboard-container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center; /* ✅ center vertically like original */
+    padding-top: 75px; 
+    margin: 0 auto;
+    width: 100%;
+    box-sizing: border-box;
+  }
+
+  .scoreboard {
+    width: 90%;
+    max-width: 350px;
+    margin: 10px auto;
+    padding: 25px 20px;
+    box-sizing: border-box;
+  }
+
+  .buttons-container {
+    flex-direction: column;
+    align-items: center;
+    gap: 15px;
+    margin: 40px auto 0;
+    max-width: 350px;
+    width: 90%;
+    box-sizing: border-box;
+  }
+
+  .buttons-container .btn {
+    width: 200px;
+  }
+
+  .btn:hover {
+    transform: none !important;
+    box-shadow: none !important;
+    color: inherit;
+    background: inherit;
+  }
+
+  .modal-content {
+    width: 85% !important;
+    max-width: 300px;
+    padding: 22px 18px !important;
+    margin-top: 25vh !important;
+    margin-left: auto !important;
+    margin-right: auto !important;
+    transform: none !important;
+  }
+
+  /* Breakpoint: Max 400px */
+  @media (max-width: 400px) {
+    .scoreboard {
+      width: 90%;
+      max-width: 320px;
+      margin: 10px auto;
+      padding: 20px 16px;
+    }
+
+    .buttons-container {
+      width: 90%;
+      max-width: 320px;
+      margin: 35px auto 0;
+    }
+
+    .buttons-container .btn {
+      width: 200px;
+    }
+  }
+
+  /* Breakpoint: Max 320px */
+  @media (max-width: 320px) {
+    .scoreboard {
+      width: 95%;
+      max-width: 280px;
+      padding: 18px 14px;
+    }
+
+    .buttons-container {
+      width: 95%;
+      max-width: 280px;
+      margin: 35px auto 0;
+    }
+
+    .buttons-container .btn {
+      width: 180px;
+    }
+  }
+
+  @media (hover: none) and (pointer: coarse) {
+    .btn:hover,
+    #qr-scanner:hover,
+    #exit-game:hover,
+    #win-ok-btn:hover {
+      background: #000 !important;   /* base background */
+      color: #fff !important;        /* text stays white */
+      box-shadow: 0 0 10px #00ffff !important;
+      border: 2px solid #00ffff !important;
+      text-shadow: none !important;
+    }
+ 
+    .btn:active,
+    #qr-scanner:active,
+    #exit-game:active,
+    #win-ok-btn:active {
+      background-color: #00ffff;
+      color: #000;
+      transform: scale(0.97);
+      box-shadow: 0 0 16px #00ffff;
+      transition: all 0.1s ease-in-out;
+    }
+  }
+}

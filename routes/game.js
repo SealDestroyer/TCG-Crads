@@ -112,7 +112,7 @@ module.exports = (db, checkLoggedIn) => {
         const studentId = req.session.student_id;
         const game_id = req.session.game_id;
 
-        const gameDuration = 1 * 60 * 1000; // 10 minutes in milliseconds
+        const gameDuration = 60 * 60 * 1000; // 10 minutes in milliseconds
         const endTime = new Date(Date.now() + gameDuration);
 
         const query = `
