@@ -1,8 +1,8 @@
 const express = require('express');
 const router = express.Router();
 
-module.exports = (db, checkLoggedIn) => {
-  router.post('/submit-answer', checkLoggedIn, (req, res) => {
+module.exports = (db) => {
+  router.post('/submit-answer', (req, res) => {
     const student_id = req.session.student_id;
     const game_id = req.session.game_id;
 
