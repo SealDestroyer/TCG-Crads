@@ -14,7 +14,7 @@ html
       .scoreboard
         .player
           .profile-pic
-            img(src="/img/panda.jpg" alt="Profile Picture")
+            img(src=`/img/${player_one_picture}` alt="Player 1 Picture")
           .player-info
             .player-name #{player_one_name}
             .hp #{player_one_hp} HP
@@ -24,7 +24,7 @@ html
 
         .player
           .profile-pic
-            img(src="/img/panda.jpg" alt="Profile Picture")
+            img(src=`/img/${player_two_picture}` alt="Player 2 Picture")
           .player-info
             .player-name #{player_two_name}
             .hp #{player_two_hp} HP

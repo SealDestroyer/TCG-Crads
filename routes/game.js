@@ -176,7 +176,7 @@ module.exports = (db, checkLoggedIn) => {
         });
     });
 
-    // ✅ Startgame Page (Dynamic Player Names + HP)
+    // ✅ Startgame Page (Dynamic Player Names + HP + Profile Pictures)
     router.get('/startgame', checkLoggedIn, (req, res) => {
         const studentId = req.session.student_id;
         const game_id = req.session.game_id;
@@ -186,7 +186,7 @@ module.exports = (db, checkLoggedIn) => {
         }
 
         const query = `
-            SELECT gp.student_id, gp.is_player_one, gp.HP, s.name
+            SELECT gp.student_id, gp.is_player_one, gp.HP, s.name, s.profile_picture
             FROM game_players gp
             JOIN student s ON gp.student_id = s.student_ID
             WHERE gp.game_id = ?
@@ -200,14 +200,17 @@ module.exports = (db, checkLoggedIn) => {
 
             let player_one_name = "", player_two_name = "";
             let player_one_hp = 0, player_two_hp = 0;
+            let player_one_picture = "panda.jpg", player_two_picture = "panda.jpg"; // default
 
             results.forEach(p => {
                 if (p.is_player_one) {
                     player_one_name = p.name;
                     player_one_hp = p.HP;
+                    if (p.profile_picture) player_one_picture = p.profile_picture;
                 } else {
                     player_two_name = p.name;
                     player_two_hp = p.HP;
+                    if (p.profile_picture) player_two_picture = p.profile_picture;
                 }
             });
 
@@ -215,10 +218,13 @@ module.exports = (db, checkLoggedIn) => {
                 player_one_name,
                 player_two_name,
                 player_one_hp,
-                player_two_hp
+                player_two_hp,
+                player_one_picture,
+                player_two_picture
             });
         });
     });
+
 
     // ✅ Game Timer Timeout: Determine winner by HP or declare tie
     router.post('/timeout', checkLoggedIn, (req, res) => {
