@@ -204,6 +204,62 @@ select.input-field:valid + .input-label {
   color: #bf00ff;
 }
 
+/* === MODAL STYLES FOR PROFILE PAGE === */
+.modal {
+  display: none;
+  position: fixed;
+  z-index: 1000;
+  left: 0;
+  top: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0, 0, 0, 0.8); /* Slight transparency */
+}
+
+.modal-content {
+  background-color: #000; /* Full black background */
+  margin: 0 auto;
+  margin-top: 25vh;
+  padding: 25px 20px;
+  border: 2px solid #bf00ff; /* Neon purple */
+  border-radius: 10px;
+  width: 350px;
+  text-align: center;
+  box-shadow: 0 0 25px #bf00ff;
+  animation: glowModal 1.5s infinite alternate;
+  color: #fff;
+}
+
+@keyframes glowModal {
+  from { box-shadow: 0 0 20px #bf00ff; }
+  to { box-shadow: 0 0 35px #bf00ff; }
+}
+
+.modal-content h2 {
+  color: #bf00ff;
+  text-shadow: 0 0 10px #bf00ff;
+  margin-bottom: 12px;
+}
+
+.modal-content button {
+  padding: 12px 25px;
+  background-color: #bf00ff;
+  border: none;
+  border-radius: 5px;
+  font-weight: bold;
+  color: #000;
+  font-size: 1em;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  margin-top: 10px;
+}
+
+.modal-content button:hover {
+  background-color: #a100e2;
+  transform: scale(1.05);
+  box-shadow: 0 0 16px #bf00ff;
+}
+
   
   
   

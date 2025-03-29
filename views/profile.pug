@@ -16,7 +16,8 @@ html
     .profile-container
       .profile-box
         .profile-pic-wrapper
-        img#profile-pic(src="/img/panda.jpg", alt="Profile Picture")
+        img#profile-pic(src=profile_pic_url || "/img/panda.jpg", alt="Profile Picture")
+        p#file-name(style="font-size: 0.9em; color: #ccc; margin-top: 8px;") No file chosen
         input(type="file", id="upload-pic", accept="image/*", class="file-input")
         label.upload-btn(for="upload-pic") Choose File
 
@@ -43,6 +44,20 @@ html
           .form-buttons
             button.btn.save-btn(type="submit") Save
             button.btn.delete-btn(type="button") Delete
+
+        // Save Result Modal
+        #saveModal.modal(style="display: none;")
+          .modal-content
+            h2#save-modal-text Saved successfully!
+            button.btn#save-ok-btn OK
+
+        // Delete Confirmation Modal
+        #deleteModal.modal(style="display: none;")
+          .modal-content
+            h2 Are you sure you want to delete your account?
+            .form-buttons
+              button.btn#confirm-delete-btn Yes
+              button.btn#cancel-delete-btn No
 
 
     script(src="/profile.js")

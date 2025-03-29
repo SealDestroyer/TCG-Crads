@@ -80,6 +80,10 @@ app.use(qrQuestionRoute);
 const submitAnswerRoute = require('./routes/submitanswer')(db);
 app.use(submitAnswerRoute);
 
+const profileRoutes = require("./routes/profile")(db, checkLoggedIn);
+app.use(profileRoutes); 
+
+
 // Defines a route for the root URL ('/') and renders the 'index.pug' view with provided title and message.
 app.get('/registration', (req, res) => { res.render('registration'); });
 app.get('/homepage', (req, res) => { res.render('homepage'); });
