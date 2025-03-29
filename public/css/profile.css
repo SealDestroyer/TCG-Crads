@@ -28,6 +28,7 @@ body {
     max-width: 420px;
     text-align: center;
     animation: glowBox 1.5s infinite alternate;
+    margin-top: -30px;
   }
   
   @keyframes glowBox {
