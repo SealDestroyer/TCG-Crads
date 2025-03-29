@@ -1,8 +1,8 @@
 const express = require('express');
 const router = express.Router();
 
-module.exports = (db) => {
-  router.get('/qrquestion/:type/:difficulty/:value', (req, res) => {
+module.exports = (db, checkLoggedIn) => {
+  router.get('/qrquestion/:type/:difficulty/:value', checkLoggedIn, (req, res) => {
     const { type, difficulty, value } = req.params;
     const student_id = req.session.student_id;
     const game_id = req.session.game_id;

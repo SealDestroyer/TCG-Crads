@@ -18,7 +18,7 @@ $(document).ready(function () {
 
   // 🟢 Load profile info on page load
   $.ajax({
-    url: "/api/profile",
+    url: "/profile",
     method: "GET",
     dataType: "json",
     success: function (data) {
@@ -27,7 +27,7 @@ $(document).ready(function () {
         $("#email").val(data.email);
         $("#contact").val(data.contact || "");
         $("#gender").val(data.gender || "");
-        $("#profile-pic").attr("src", data.profile_pic ? "/uploads/profilepics/" + data.profile_pic : "/img/panda.jpg");
+        $("#profile-pic").attr("src", data.profile_picture ? "/img/" + data.profile_picture : "/img/panda.jpg");
 
         // Lock contact/gender from being cleared once saved
         if (data.contact) $("#contact").data("locked", true);
@@ -78,7 +78,7 @@ $(document).ready(function () {
     }
 
     $.ajax({
-      url: "/api/profile",
+      url: "/profile",
       method: "POST",
       data: formData,
       processData: false,
@@ -107,7 +107,7 @@ $(document).ready(function () {
 
   $("#confirm-delete-btn").click(function () {
     $.ajax({
-      url: "/api/profile/delete",
+      url: "/profile/delete",
       method: "POST",
       success: function (res) {
         if (res.success) {
@@ -130,7 +130,7 @@ $(document).ready(function () {
 
   $("#save-ok-btn").click(function () {
     $("#saveModal").fadeOut();
-    location.reload(); // optional: reload to refresh locked state
+    location.reload(); // optional: refresh locked state
   });
 
   $(window).click(function (event) {
