@@ -276,6 +276,41 @@ select.input-field:valid + .input-label {
     padding: 20px 18px;
     margin-top: 44vh !important;         /* 🔼 push up manually like desktop */
   }
+    .profile-box {
+      padding: 25px 15px;
+    }
+  
+    .form-group {
+      margin-bottom: 18px;
+    }
+  
+    #profile-pic {
+      width: 110px;
+      height: 110px;
+      margin-bottom: 10px;
+    }
+  
+    .upload-btn {
+      margin-bottom: 20px;
+    }
+  
+    #file-name {
+      font-size: 0.75em;
+    }
+  
+    /* 🟣 KEEP BUTTONS SIDE BY SIDE */
+    .form-buttons {
+      display: flex;
+      justify-content: space-between;
+      gap: 12px;
+      flex-direction: row; /* 🔥 lock it to side-by-side */
+    }
+  
+    .btn {
+      flex: 1;
+      padding: 12px 0;
+      font-size: 1em;
+    }
 }
 
   
