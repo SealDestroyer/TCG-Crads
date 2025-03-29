@@ -1,0 +1,115 @@
+body {
+    font-family: Arial, sans-serif;
+    background: url('/img/test.jpg') no-repeat center center fixed;
+    background-size: cover;
+    margin: 0;
+    padding: 0;
+    color: #fff;
+    overflow-x: hidden;
+  }
+  
+  /* ==== History Box Wrapper ==== */
+  .profile-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    padding-top: 60px;
+    box-sizing: border-box;
+    padding: 60px 20px;
+  }
+  
+  .profile-box {
+    background-color: rgba(0, 0, 0, 0.8);
+    border: 2px solid #bf00ff;
+    box-shadow: 0 0 25px #bf00ff;
+    border-radius: 20px;
+    padding: 30px 25px;
+    width: 90%;
+    max-width: 700px;
+    max-height: 650px;
+    min-height: 650px;
+    overflow-y: auto;
+    text-align: left;
+    animation: glowBox 1.5s infinite alternate;
+    margin-top: 25px;
+  }
+  
+  /* Title glow */
+  .profile-box h2 {
+    color: #bf00ff;
+    text-shadow: 0 0 10px #bf00ff;
+    text-align: center;
+    margin-bottom: 25px;
+  }
+  
+  @keyframes glowBox {
+    from { box-shadow: 0 0 20px #bf00ff; }
+    to   { box-shadow: 0 0 35px #bf00ff; }
+  }
+  
+  /* === Match Row Styling === */
+  .match-row {
+    margin-bottom: 15px;
+    padding: 12px 15px;
+    border: 1px solid #bf00ff;
+    border-radius: 8px;
+    background: rgba(0, 0, 0, 0.6);
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+    cursor: default;
+    box-shadow: 0 0 8px #bf00ff;
+  }
+  
+  .match-row:hover {
+    transform: scale(1.03);
+    box-shadow: 0 0 14px #bf00ff, 0 0 20px #bf00ff;
+  }
+  
+  /* No Match History Text */
+  .profile-box p {
+    color: #bf00ff;
+    font-size: 1.2em;
+    text-align: center;
+    margin-top: 100px;
+    text-shadow: 0 0 10px #bf00ff;
+  }
+ 
+  /* ===== Custom Scrollbar Style (Black with Purple Glow Border) ===== */
+
+.profile-box::-webkit-scrollbar {
+    width: 10px;
+  }
+  
+  .profile-box::-webkit-scrollbar-track {
+    background: #000; /* black background */
+    border-radius: 8px;
+  }
+  
+  /* Scroll Thumb — black center, purple glowing border */
+  .profile-box::-webkit-scrollbar-thumb {
+    background-color: #000; /* black thumb */
+    border: 2px solid #bf00ff; /* glowing purple border */
+    border-radius: 8px;
+    box-shadow: 0 0 8px #bf00ff;
+  }
+  
+  /* On hover: glow more */
+  .profile-box::-webkit-scrollbar-thumb:hover {
+    background-color: #000;
+    border-color: #a100e2;
+    box-shadow: 0 0 12px #bf00ff, 0 0 18px #bf00ff;
+  }
+
+  /* Responsive */
+  @media screen and (max-width: 600px) {
+    .profile-box {
+      max-height: 70vh;
+      padding: 25px 20px;
+    }
+  
+    .match-row {
+      font-size: 0.95em;
+    }
+  }
+  
+  

@@ -1,0 +1,34 @@
+doctype html
+html
+  head
+    title Match History
+    meta(charset="utf-8")
+    meta(name="viewport", content="width=device-width, initial-scale=1.0")
+    link(rel="stylesheet", href="/css/homepage.css")
+    link(rel="stylesheet", href="/css/history.css") 
+    script(src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js")
+
+  body
+    include _navbar.pug
+
+    .profile-container
+      .profile-box(style="max-height: 550px; overflow-y: auto;")
+        h2(style="color: #bf00ff; text-shadow: 0 0 10px #bf00ff; margin-bottom: 25px;")
+          | Match History
+
+        //- If no match history
+        if history.length === 0
+          p(style="color: #bf00ff; font-size: 1.2em; text-align: center; margin-top: 100px; text-shadow: 0 0 10px #bf00ff;")
+            | No Match History
+
+        //- Loop through match history
+        else
+          each match in history
+            .match-row(style="margin-bottom: 15px; padding: 12px 15px; border: 1px solid #bf00ff; border-radius: 8px; background: rgba(0,0,0,0.6); transition: transform 0.3s ease, box-shadow 0.3s ease; cursor: default; box-shadow: 0 0 8px #bf00ff;")
+              p(style="margin: 0; color: #fff;")
+                if match.result === 'win'
+                  | 🏆 You won against #{match.opponent_name} (Your HP: #{match.my_hp}, Opponent HP: #{match.opponent_hp})
+                else
+                  | ❌ You lost to #{match.opponent_name} (Your HP: #{match.my_hp}, Opponent HP: #{match.opponent_hp})
+
+    script(src="/history.js")
