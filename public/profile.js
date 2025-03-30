@@ -1,5 +1,6 @@
 $(document).ready(function () {
   // Background preload
+  let originalEmail = "";
   let bg = new Image();
   bg.src = "/img/test.jpg";  // The image is now in the /img folder inside public
   bg.onload = function () {
@@ -25,6 +26,7 @@ $(document).ready(function () {
       if (data.success) {
         $("#name").val(data.name);
         $("#email").val(data.email);
+        originalEmail = data.email;
         $("#contact").val(data.contact || "");
         $("#gender").val(data.gender || "");
         $("#profile-pic").attr(
@@ -52,6 +54,12 @@ $(document).ready(function () {
   
     const name = $("#name").val().trim();
     const email = $("#email").val().trim();
+
+    if (email !== originalEmail) {
+      showModal("Email cannot be changed.");
+      return;
+    }
+    
     const contact = $("#contact").val().trim();
     const gender = $("#gender").val();
   
