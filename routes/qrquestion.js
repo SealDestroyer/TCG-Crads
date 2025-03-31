@@ -72,6 +72,7 @@ module.exports = (db, checkLoggedIn) => {
       SELECT option_id, option_text, is_correct, reason 
       FROM question_option 
       WHERE question_id = ?
+      ORDER BY RAND()
     `;
 
     console.log(`📦 Player ${res.req.session.student_id} gets question ${question.question_id} (${question.card_type} | ${question.difficulty_level} | ${question.effect_value})`);
